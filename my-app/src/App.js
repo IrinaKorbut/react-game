@@ -1,5 +1,6 @@
 import './App.scss';
 import { Header } from './Components/Header';
+import { Footer } from './Components/Footer';
 import { Home } from './Home';
 import { Game } from './Game';
 import { Rules } from './Rules';
@@ -22,6 +23,7 @@ function App() {
           <Route path='/settings' component={Settings}/>
           <Route path='/statistic' component={Statistic}/>
         </Switch>
+        <Footer/>
       </BrowserRouter>        
     </div>
   );

@@ -1,0 +1,20 @@
+$footer_header_color:#212529;
+$footer_header_text_color:#adb1b8;
+
+.footer {
+    background-color: $footer_header_color;
+    color:$footer_header_text_color;
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+
+        .logo {
+            width: 80px;
+
+            
+        }
+    }
+}
