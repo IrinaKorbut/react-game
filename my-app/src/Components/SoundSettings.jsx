@@ -4,11 +4,16 @@ import './SoundSettings.scss'
 
 export const SoundSettings = () => {
     return (
-        <Container >
-            <Jumbotron style={{width: '50%', margin: '0 auto'}} bg="dark" variant="dark" className=" bg-secondary text-white">
-                <FormSwitch label='Music'/>
-                <FormSwitch label='Sound'/>
-            </Jumbotron>
-        </Container>
+        <div className="wrapper">
+            <div className="main">        
+                <Container >
+                    <Jumbotron style={{ margin: '0 auto', background: 'rgba(0, 0, 0, 0)'}}  variant="dark" className="text-white">
+                        <FormSwitch label='Music'/>
+                        <FormSwitch label='Sound'/>
+                    </Jumbotron>
+                </Container>
+            </div>
+        </div>
+        
     )
 }

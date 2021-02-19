@@ -3,7 +3,7 @@ import { Form } from 'react-bootstrap';
 export const FormSwitch = (props) => {
     const id = `${props.label}-switch`
     return (
-        <Form className="mb-5">
+        <Form className="mb-3">
             <Form.Check
                 className="mb-2"
                 type="switch"
