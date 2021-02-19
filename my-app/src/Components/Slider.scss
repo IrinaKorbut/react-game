@@ -1,5 +1,9 @@
 .slider {
-    height: 80%;
+    height: 89%;
+
+    .carousel-inner {
+        height: 80%;
+    }
 
     &__item {
         height: 100%;

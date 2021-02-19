@@ -1,3 +1,5 @@
+import './Rules_page.scss'
+
 export const Rules_page = (props) => {
     return (
         <div className='rules-page'>
