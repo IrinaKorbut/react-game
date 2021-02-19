@@ -13,7 +13,6 @@ export const SoundSettings = () => {
                     </Jumbotron>
                 </Container>
             </div>
-        </div>
-        
+        </div>        
     )
 }
