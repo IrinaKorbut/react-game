@@ -1,5 +1,7 @@
+import { TableStatictic } from './Components/TableStatictic'
+
 export const Statistic = () => {
     return (
-        <h1>Statistic page</h1>
+        <TableStatictic/>
     )
 }

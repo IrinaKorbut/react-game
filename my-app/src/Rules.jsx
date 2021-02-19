@@ -1,11 +1,10 @@
 import { Container, Jumbotron } from 'react-bootstrap';
 
-
 export const Rules = () => {
     return (
         <div className="wrapper">
             <Container >
-                <Jumbotron style={{ margin: '0 auto', background: 'rgba(0, 0, 0, 0)' }} variant="dark" className="text-white">
+                <Jumbotron style={{ margin: '0 auto', background: 'rgba(0, 0, 0, 0)' }} className="text-white">
                     <h1>Play</h1>
                     <p>The object is to clear the board by selecting numbers that match or that add to ten. Numbers match vertically or horizontally and must be contiguous. For example, a 2 and an 8 add to 10, and so can be eliminated if they are adjacent to each other either horizontally or vertically. Similar for 1 – 9, 3 – 7, etc., as well as 4 – 4, 5 – 5, etc. There can be black space between the numbers; the rule is that there cannot be another number between them.</p>
                     <h1>Controls</h1>
