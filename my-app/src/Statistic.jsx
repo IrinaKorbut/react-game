@@ -1,4 +1,4 @@
-import { TableStatictic } from './Components/TableStatictic'
+import { TableStatictic } from './Components/TableStatistic/TableStatictic'
 
 export const Statistic = () => {
     return (

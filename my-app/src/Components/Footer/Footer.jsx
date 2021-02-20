@@ -1,6 +1,6 @@
 import { Container, Image } from 'react-bootstrap';
 import './Footer.scss'
-import logo_rsSchool from './../assets/images/rs_school_js.svg'
+import logo_rsSchool from './../../assets/images/rs_school_js.svg'
 
 export const Footer = () => {
     return (

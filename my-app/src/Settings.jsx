@@ -1,4 +1,4 @@
-import { SoundSettings } from './Components/SoundSettings'
+import { SoundSettings } from './Components/Settings/SoundSettings'
 
 export const Settings = () => {
     return (

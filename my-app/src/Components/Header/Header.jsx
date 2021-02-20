@@ -3,8 +3,6 @@ import {Navbar, Nav, Container, Button, Modal, Form} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
-// import { ModalWindowEnterName } from './ModalWindowEnterName'
-
 const Styles = styled.div `
   a, .navbar-nav, .nav-link {
     color: #adb1b8;
