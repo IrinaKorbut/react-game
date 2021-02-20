@@ -1,11 +1,11 @@
 import { Container, Jumbotron } from 'react-bootstrap';
 import { FormSwitch } from './FormSwitch';
-import './SoundSettings.scss'
+import settings from './SoundSettings.module.scss'
 
-export const SoundSettings = () => {
+export const SettingsWindow = () => {
     return (
-        <div className="wrapper">
-            <div className="main">        
+        <div className={settings.wrapper}>
+            <div className={settings.main}>        
                 <Container >
                     <Jumbotron style={{ margin: '0 auto', background: 'rgba(0, 0, 0, 0)'}}  variant="dark" className="text-white">
                         <FormSwitch label='Music'/>

@@ -1,7 +1,7 @@
-import { SoundSettings } from './Components/Settings/SoundSettings'
+import { SettingsWindow } from './Components/Settings/SettingsWindow'
 
 export const Settings = () => {
     return (
-        <SoundSettings/>
+        <SettingsWindow/>
     )
 }

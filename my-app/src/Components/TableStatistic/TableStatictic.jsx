@@ -1,12 +1,12 @@
 import { Container, Table } from 'react-bootstrap';
 import { TableRow } from './TableRow'
 
-import './Statistic.scss'
+import table from'./Statistic.module.scss'
 
 export const TableStatictic = (props) => {
     return (
-        <Container className="table-container">
-            <Table striped bordered hover variant="dark" size="sm" className="table-custom">
+        <Container className={table.container}>
+            <Table striped bordered hover variant="dark" size="sm" className={table.custom}>
             <thead>
                 <tr>
                     <th >#</th>
