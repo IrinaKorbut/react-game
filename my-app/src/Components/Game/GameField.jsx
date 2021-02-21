@@ -3,16 +3,23 @@ import game from './Game.module.scss';
 import { renderGameField } from './helpGameFunctions';
 
 const size = 10;
+
 export const GameField = () => {
+
+    const Game = {
+        firstNumber: null,
+        secondNumber: null,
+    }
+
+    const cellsData = renderGameField(size);
+    
+    const cellElements = cellsData.map(array => (
+        array.map( cell => <GameCell value={cell.value} data={cell.data}/> )
+    ))
+
     return (
         <div className={game.field}>
-            {
-                renderGameField(size).map(item => (
-                    item.map(item => (
-                        <GameCell value={item.value} data={item.data}/>
-                    ))
-                ))
-            }
+            {cellElements}
         </div>
     )
 }
