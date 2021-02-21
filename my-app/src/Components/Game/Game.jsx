@@ -1,7 +1,8 @@
 import { GameContainer } from './GameContainer'
 
-export const Game = () => {
+export const Game = (props) => {
+
     return (
-        <GameContainer />
+        <GameContainer state={ props.game }/>
     )
 }

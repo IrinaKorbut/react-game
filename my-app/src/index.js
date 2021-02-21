@@ -3,10 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import { renderGameField } from './Components/Game/helpGameFunctions';
+import { state, clickHandler } from './redux/state'
+
+// const size = 10;
+
+// const cellsData = renderGameField(size);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App state={ state } clickHandler={ clickHandler } />
   </React.StrictMode>,
   document.getElementById('root')
 );

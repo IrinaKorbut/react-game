@@ -11,17 +11,18 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 
 
-function App() {
+function App(props) {
+
   return (
     <div className="App bg-secondary">
       <BrowserRouter>
         <Header/>
-        <Switch>
-          <Route exact path='/' component={Home}/>
-          <Route path='/game' component={Game}/>
-          <Route path='/rules' component={Rules}/>
-          <Route path='/settings' component={Settings}/>
-          <Route path='/statistic' component={Statistic}/>
+        <Switch >
+          <Route exact path='/' render={() => <Home />} />
+          <Route path='/game' render={() => <Game game={ props.state.game } />} />
+          <Route path='/rules' render={() => <Rules />} />
+          <Route path='/settings' render={() => <Settings />} />
+          <Route path='/statistic' render={() => <Statistic />} />
         </Switch>
         <Footer/>
       </BrowserRouter>        
