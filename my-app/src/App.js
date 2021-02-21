@@ -1,11 +1,11 @@
 import './App.scss';
 import { Header } from './Components/Header/Header';
 import { Footer } from './Components/Footer/Footer';
-import { Home } from './Home';
-import { Game } from './Game';
-import { Rules } from './Rules';
-import { Settings } from './Settings';
-import { Statistic } from './Statistic';
+import { Home } from './Components/Home/Home';
+import { Game } from './Components/Game/Game';
+import { Rules } from './Components/Rules/Rules';
+import { Settings } from './Components/Settings/Settings';
+import { Statistic } from './Components/TableStatistic/Statistic';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 

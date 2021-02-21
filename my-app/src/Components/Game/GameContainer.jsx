@@ -1,4 +1,3 @@
-import { Container } from 'react-bootstrap';
 import { GameField } from './GameField';
 
 import game from './Game.module.scss';

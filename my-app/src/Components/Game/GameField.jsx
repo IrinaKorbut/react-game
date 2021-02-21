@@ -9,7 +9,7 @@ export const GameField = () => {
             {
                 renderGameField(size).map(item => (
                     item.map(item => (
-                        <GameCell value={item.value} />
+                        <GameCell value={item.value} data={item.data}/>
                     ))
                 ))
             }
