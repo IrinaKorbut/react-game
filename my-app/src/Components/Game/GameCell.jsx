@@ -1,14 +1,20 @@
 import game from './Game.module.scss';
-import { clickHandler } from './../../redux/state';
+import { clickHandlerCellActionCreator } from '../../redux/gameReducer';
+
 
 
 export const GameCell = (props) => {
+    let clickHandlerCell = (event) => {
+        let currentEvent = event;
+        props.dispatch(clickHandlerCellActionCreator(currentEvent))
+    }
+
     return (
         <div 
             className={`${game.cell} ${props.activeClass ? game.active : ''}`} 
-            onClick={clickHandler} 
-            data={props.data}>
-                {props.value}
+            onClick={ clickHandlerCell } 
+            data={ props.data }>
+                { props.value }
         </div>
     )
 }

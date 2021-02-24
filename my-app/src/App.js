@@ -12,14 +12,15 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 
 function App(props) {
-
   return (
     <div className="App bg-secondary">
       <BrowserRouter>
         <Header/>
         <Switch >
           <Route exact path='/' render={() => <Home />} />
-          <Route path='/game' render={() => <Game game={ props.state.game } />} />
+          <Route path='/game' render={() => <Game 
+            game={ props.state.game } 
+            dispatch={ props.dispatch }/>} />
           <Route path='/rules' render={() => <Rules />} />
           <Route path='/settings' render={() => <Settings />} />
           <Route path='/statistic' render={() => <Statistic />} />
