@@ -1,7 +1,7 @@
 import { isThereIsFirstNumber, setFirstNumber, setSecondNumber, 
     clearNumber, setGameSize, generateCellsData, isAbleCrossNumbers, 
     crossNumber, isElementLocatedCloseEachOther } from "../functions/gameLogic";
-    import { isGameFinished } from "../functions/finishGame";
+    import { isGameFinished, countScore } from "../functions/finishGame";
 const CLICK_HANDLER_CELL = 'CLICK_HANDLER_CELL';
 
 export let initialState = {
@@ -18,7 +18,7 @@ generateCellsData();
 export const gameReducer = (state = initialState, action) => {
     switch (action.type) {
         case CLICK_HANDLER_CELL:
-            if (Number(action.event.target.innerText) === -1) {
+            if (Number(action.event.target.innerText) === 0) {
                 return state;
             }
             const id = action.event.target.getAttribute('data');
@@ -37,7 +37,8 @@ export const gameReducer = (state = initialState, action) => {
                 clearNumber(state);
 
                 if (isGameFinished(state)) {
-                    setTimeout(() => {alert('game over')}, 1000)                    
+                    let score = countScore(state)
+                    setTimeout(() => {alert(`Game over. Your score is: ${score}`)}, 1000)                    
                 }
                 //check is finish game
             } else {

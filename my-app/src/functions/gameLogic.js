@@ -15,8 +15,8 @@ export let generateCellsData = () => {
             let valueCell = Math.floor(Math.random() * 9) + 1;
 
             // let indexRandom = Math.floor(Math.random() *4) + 1;
-            // valueCell = indexRandom === index ? -1 : valueCell;
-            // let isDisableClass = (valueCell === -1);
+            // valueCell = indexRandom === index ? 0 : valueCell;
+            // let isDisableClass = (valueCell === 0);
 
             gameNumberArr.push(valueCell);
             const cellObj =  {
@@ -73,7 +73,7 @@ export let isAbleCrossNumbers = (state) => {
 export let crossNumber = (numberMatrix, cell) => {
     // debugger;
         cell.disableClass = true;
-        numberMatrix[cell.i][cell.j] = -1;
+        numberMatrix[cell.i][cell.j] = 0;
 }
 
 export let isElementLocatedCloseEachOther = (state) => {
@@ -85,7 +85,7 @@ export let isElementLocatedCloseEachOther = (state) => {
         let lastIndex = Math.max(firstNumber.j, secondNumber.j);
         // debugger;
         for (; firstIndex < lastIndex; firstIndex += 1) {
-            if (state.numberMatrix[i][firstIndex] !== -1) {
+            if (state.numberMatrix[i][firstIndex] !== 0) {
                 return false;
             }
         }
@@ -97,7 +97,7 @@ export let isElementLocatedCloseEachOther = (state) => {
         let lastIndex = Math.max(firstNumber.i, secondNumber.i);
         // debugger;
         for (; firstIndex < lastIndex; firstIndex += 1) {
-            if (state.numberMatrix[firstIndex][j] !== -1) {
+            if (state.numberMatrix[firstIndex][j] !== 0) {
                 return false;
             }
         }

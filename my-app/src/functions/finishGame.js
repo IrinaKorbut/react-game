@@ -28,7 +28,7 @@ let clearMatrixFromCrossNumbers = (matrix) => {
   for (let i = 0; i < matrix.length; i++) {
   	resultMatrix.push([]);
     for (let j = 0; j < matrix[i].length; j++) {
-    	if (matrix[i][j] !== -1) {
+    	if (matrix[i][j] !== 0) {
       	resultMatrix[i].push(matrix[i][j])
       }
     }
@@ -62,4 +62,16 @@ export let isGameFinished = (state) => {
     console.log(true)
     return true;
 }
+
+export let countScore = (state) => {
+    const finishedMatrix = duplicatedMatrix(state.numberMatrix);
+    const finishedMatrixWithoutCrossNumbers = clearMatrixFromCrossNumbers(finishedMatrix);
+// debugger;
+    let matrixArrSum = finishedMatrixWithoutCrossNumbers.map((array) => {
+      return array.reduce((accum, current) => accum + current, 0)
+    })
+    let score = matrixArrSum.reduce((accum, current) => 	accum + current, 0)
+    return score;
+}
+
 
