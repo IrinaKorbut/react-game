@@ -102,7 +102,8 @@ export let isElementLocatedCloseEachOther = (state) => {
             }
         }
         return true;
-    }
-    
+    }    
 }
+
+
 

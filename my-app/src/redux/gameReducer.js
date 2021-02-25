@@ -1,7 +1,7 @@
 import { isThereIsFirstNumber, setFirstNumber, setSecondNumber, 
     clearNumber, setGameSize, generateCellsData, isAbleCrossNumbers, 
     crossNumber, isElementLocatedCloseEachOther } from "../functions/gameLogic";
-
+    import { isGameFinished } from "../functions/finishGame";
 const CLICK_HANDLER_CELL = 'CLICK_HANDLER_CELL';
 
 export let initialState = {
@@ -12,7 +12,7 @@ export let initialState = {
     secondNumber: null,
 }
 
-setGameSize(8);
+setGameSize(4);
 generateCellsData();
 
 export const gameReducer = (state = initialState, action) => {
@@ -29,14 +29,17 @@ export const gameReducer = (state = initialState, action) => {
                 setSecondNumber(state, state.cellsData[i][j]);
                 state.cellsData[i][j].activeClass = !state.cellsData[i][j].activeClass;
                 // debugger;
-
                 if (isAbleCrossNumbers(state) && isElementLocatedCloseEachOther(state)) {
                     // debugger;
                     crossNumber(state.numberMatrix, state.firstNumber)
-                    crossNumber(state.numberMatrix, state.secondNumber)
-                    
+                    crossNumber(state.numberMatrix, state.secondNumber)                    
                 }
                 clearNumber(state);
+
+                if (isGameFinished(state)) {
+                    setTimeout(() => {alert('game over')}, 1000)                    
+                }
+                //check is finish game
             } else {
                 if (!isThereIsFirstNumber(state)) {
                     setFirstNumber(state, state.cellsData[i][j]);        
