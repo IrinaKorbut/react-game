@@ -1,11 +1,12 @@
 import { isThereIsFirstNumber, setFirstNumber, setSecondNumber, 
-    clearNumber, setGameSize, generateCellsData } from "../functions/gameLogic";
+    clearNumber, setGameSize, generateCellsData, generateNumberMatrix } from "../functions/gameLogic";
 
 const CLICK_HANDLER_CELL = 'CLICK_HANDLER_CELL';
 
 export let initialState = {
     size: 10, // по  дефолту
     cellsData: [],
+    numberMatrix: [],
     firstNumber: null,
     secondNumber: null,
 }
@@ -16,6 +17,9 @@ generateCellsData();
 export const gameReducer = (state = initialState, action) => {
     switch (action.type) {
         case CLICK_HANDLER_CELL:
+            if (Number(action.event.target.innerText) === -1) {
+                return state;
+            }
             const id = action.event.target.getAttribute('data');
             const i = Number(id[0]);
             const j = Number(id[1]);

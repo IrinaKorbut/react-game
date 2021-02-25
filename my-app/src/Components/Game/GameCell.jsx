@@ -9,9 +9,12 @@ export const GameCell = (props) => {
         props.dispatch(clickHandlerCellActionCreator(currentEvent))
     }
 
+    let isActiveClass = props.activeClass ? game.active : '';
+    let isDisableClass = props.disableClass ? game.disable : '';
+
     return (
         <div 
-            className={`${game.cell} ${props.activeClass ? game.active : ''}`} 
+            className={`${game.cell} ${isActiveClass} ${isDisableClass}`} 
             onClick={ clickHandlerCell } 
             data={ props.data }>
                 { props.value }

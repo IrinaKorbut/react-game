@@ -7,6 +7,7 @@ export const GameField = (props) => {
             value={cell.value} 
             data={cell.data} 
             activeClass={cell.activeClass} 
+            disableClass={cell.disableClass} 
             dispatch={ props.dispatch } /> )
     ))
 
