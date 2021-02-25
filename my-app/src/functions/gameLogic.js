@@ -38,19 +38,20 @@ export let generateCellsData = () => {
     console.log(initialState.cellsData)
 }
 
-export function isThereIsFirstNumber(state) {
+export let isThereIsFirstNumber = (state) => {
     return !!state.firstNumber;
 };
 
-export function setFirstNumber(state, cell) {
+export let setFirstNumber = (state, cell) => {
     state.firstNumber = cell
 };
 
-export function setSecondNumber(state, cell) {
+export let setSecondNumber = (state, cell) => {
     state.secondNumber = cell;
 };
 
-export function clearNumber(state) {
+export let clearNumber = (state) => {
+    // debugger;
     if (state.firstNumber) {
         state.firstNumber.activeClass = !state.firstNumber.activeClass;
         state.firstNumber = null;
@@ -58,6 +59,50 @@ export function clearNumber(state) {
     if (state.secondNumber) {
         state.secondNumber.activeClass = !state.secondNumber.activeClass;    
         state.secondNumber = null;
-    }       
+    }      
 };
+
+export let isAbleCrossNumbers = (state) => {
+    // debugger;
+    if (state.firstNumber.value === state.secondNumber.value 
+        || state.firstNumber.value + state.secondNumber.value === 10) {
+            return true;
+        }
+}
+
+export let crossNumber = (numberMatrix, cell) => {
+    // debugger;
+        cell.disableClass = true;
+        numberMatrix[cell.i][cell.j] = -1;
+}
+
+export let isElementLocatedCloseEachOther = (state) => {
+    let firstNumber = state.firstNumber;
+    let secondNumber = state.secondNumber;
+    if (firstNumber.i === secondNumber.i) {
+        let i = firstNumber.i;
+        let firstIndex = Math.min(firstNumber.j, secondNumber.j) + 1;
+        let lastIndex = Math.max(firstNumber.j, secondNumber.j);
+        // debugger;
+        for (; firstIndex < lastIndex; firstIndex += 1) {
+            if (state.numberMatrix[i][firstIndex] !== -1) {
+                return false;
+            }
+        }
+        return true;
+    }
+    if (firstNumber.j === secondNumber.j) {
+        let j = firstNumber.j;
+        let firstIndex = Math.min(firstNumber.i, secondNumber.i) + 1;
+        let lastIndex = Math.max(firstNumber.i, secondNumber.i);
+        // debugger;
+        for (; firstIndex < lastIndex; firstIndex += 1) {
+            if (state.numberMatrix[firstIndex][j] !== -1) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+}
 
