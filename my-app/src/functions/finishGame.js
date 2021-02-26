@@ -23,51 +23,46 @@ let transposeMatrix = (matrix) => {
   return transposedMatrix;
 }
 
-let clearMatrixFromCrossNumbers = (matrix) => {
-    const resultMatrix = [];
-  for (let i = 0; i < matrix.length; i++) {
-  	resultMatrix.push([]);
-    for (let j = 0; j < matrix[i].length; j++) {
-    	if (matrix[i][j] !== 0) {
-      	resultMatrix[i].push(matrix[i][j])
+const getCoordinatesAvailableMove = (matrix) => {
+	for (let i = 0; i < matrix.length; i++) {
+  	for (let j = 0; j < matrix[i].length; j++) {
+      for (let k = j + 1; k < matrix[i].length; k ++){
+        if (matrix[i][k] !== 0 
+        && (matrix[i][j] === matrix[i][k] 
+        || (matrix[i][j] + matrix[i][k]) === 10)) {
+          	return [i, j, i, k]
+         }  
+       	else if (matrix[i][k] !== 0 ) {
+            break;
+         }    
       }
     }
   }
-  return resultMatrix;
+  return null;
 }
 
-const isThereAreAnySteps = (matrix) => {
-	for (let i = 0; i < matrix.length; i++) {
-  	for (let j = 0; j < matrix[i].length; j++) {
-	    if (matrix[i][j] === matrix[i][j+1] || (matrix[i][j] + matrix[i][j+1]) === 10) {
-            return true
-        }
-    }
-  }
-  return false;
-}
-
-export let isGameFinished = (state) => {
+export let getAvailableMove = (state) => {
     // debugger;
     const baseMatrix = duplicatedMatrix(state.numberMatrix);
     const transposedMatrix = transposeMatrix(baseMatrix);
-    const baseMatrixWithoutCrossNumbers = clearMatrixFromCrossNumbers(baseMatrix);
-    const transposedMatrixWithoutCrossNumbers = clearMatrixFromCrossNumbers(transposedMatrix);
-    if (isThereAreAnySteps(baseMatrixWithoutCrossNumbers) 
-        || isThereAreAnySteps(transposedMatrixWithoutCrossNumbers)) {
-            console.log(false)
-            return false;
-        }
-    
-    console.log(true)
-    return true;
+    let coordinatesAvailableMove = null;
+    if (getCoordinatesAvailableMove(baseMatrix)) {
+      coordinatesAvailableMove = getCoordinatesAvailableMove(baseMatrix)
+    } else if (getCoordinatesAvailableMove(transposedMatrix)){
+      let coordinatesAvailableMoveInTransposeMatrix = getCoordinatesAvailableMove(transposedMatrix);
+      coordinatesAvailableMove = [];
+      coordinatesAvailableMove.push(coordinatesAvailableMoveInTransposeMatrix[1]);
+      coordinatesAvailableMove.push(coordinatesAvailableMoveInTransposeMatrix[0]);
+      coordinatesAvailableMove.push(coordinatesAvailableMoveInTransposeMatrix[3]);
+      coordinatesAvailableMove.push(coordinatesAvailableMoveInTransposeMatrix[2]);
+    }
+    return coordinatesAvailableMove;
 }
 
 export let countScore = (state) => {
     const finishedMatrix = duplicatedMatrix(state.numberMatrix);
-    const finishedMatrixWithoutCrossNumbers = clearMatrixFromCrossNumbers(finishedMatrix);
 // debugger;
-    let matrixArrSum = finishedMatrixWithoutCrossNumbers.map((array) => {
+    let matrixArrSum = finishedMatrix.map((array) => {
       return array.reduce((accum, current) => accum + current, 0)
     })
     let score = matrixArrSum.reduce((accum, current) => 	accum + current, 0)
