@@ -2,8 +2,9 @@ import { GameCell } from './GameCell';
 import game from './Game.module.scss';
 
 export const GameField = (props) => {
-    const cellElements = props.cellsData.map(array => (
+    const cellElements = props.state.cellsData.map(array => (
         array.map( cell => <GameCell 
+            state={ props.state }
             value={cell.value} 
             data={cell.data} 
             activeClass={cell.activeClass} 

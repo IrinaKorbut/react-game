@@ -2,7 +2,7 @@ import { ButtonToolbar, ButtonGroup, Button } from 'react-bootstrap';
 import { clickCancelMoveActionCreator, clickShowMoveActionCreator } from '../../../redux/gameReducer';
 
 
-export const GameButtonGroup = (props) => {
+export const GameButtonGroupFooter = (props) => {
 
     let clickCancelMove = () => {
         props.dispatch(clickCancelMoveActionCreator())

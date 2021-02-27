@@ -20,7 +20,7 @@ export let initialState = {
     doneMoves: [],
 }
 
-setGameSize(4);
+setGameSize(10);
 generateCellsData();
 
 export const gameReducer = (state = initialState, action) => {
