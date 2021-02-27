@@ -1,11 +1,15 @@
 import { ButtonToolbar, ButtonGroup, Button } from 'react-bootstrap';
-import { clickCancelMoveActionCreator } from '../../../redux/gameReducer';
+import { clickCancelMoveActionCreator, clickShowMoveActionCreator } from '../../../redux/gameReducer';
 
 
 export const GameButtonGroup = (props) => {
 
     let clickCancelMove = () => {
         props.dispatch(clickCancelMoveActionCreator())
+    }
+
+    let clickShowMove = () => {
+        props.dispatch(clickShowMoveActionCreator())
     }
 
     return (
@@ -17,7 +21,10 @@ export const GameButtonGroup = (props) => {
                 >Cancel move</Button>
             </ButtonGroup>
             <ButtonGroup className="mr-2" size="sm" aria-label="Second  group">
-                <Button variant="secondary">Show move</Button>
+                <Button 
+                    variant="secondary"
+                    onClick={ clickShowMove }
+                >Show move</Button>
             </ButtonGroup>
             <ButtonGroup size="sm" aria-label="Third  group">
                 <Button variant="secondary">Start New Game</Button>

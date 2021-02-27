@@ -56,6 +56,7 @@ export let getAvailableMove = (state) => {
       coordinatesAvailableMove.push(coordinatesAvailableMoveInTransposeMatrix[3]);
       coordinatesAvailableMove.push(coordinatesAvailableMoveInTransposeMatrix[2]);
     }
+    console.log(coordinatesAvailableMove)
     return coordinatesAvailableMove;
 }
 

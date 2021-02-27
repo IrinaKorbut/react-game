@@ -1,4 +1,5 @@
 import { initialState } from "../redux/gameReducer";
+import { getAvailableMove } from "./finishGame";
 
 export let setGameSize = (size) => {
     initialState.size = size;
@@ -21,6 +22,7 @@ export let generateCellsData = () => {
                 data: `${i}${index}`,
                 activeClass: false,
                 disableClass: false,
+                helpClass: false,
             };
             return cellObj;
         });
@@ -104,7 +106,6 @@ export let recordMove = (state) => {
 
 export let cancelMove = (state) => {
     // debugger;
-
     if (state.doneMoves.length) {
         let lastMoveFirstNumber = state.doneMoves[state.doneMoves.length - 1][0]
         let lastMoveSecondNumber = state.doneMoves[state.doneMoves.length - 1][1]
@@ -121,4 +122,20 @@ export let cancelMove = (state) => {
 }
 
 
+export let showMove = (state) => {
+    // debugger;
+    let coordinatesAvailableMove = getAvailableMove(state); 
+    if (coordinatesAvailableMove) {
+        state.cellsData[coordinatesAvailableMove[0]][coordinatesAvailableMove[1]].helpClass = true;
+        state.cellsData[coordinatesAvailableMove[2]][coordinatesAvailableMove[3]].helpClass = true;   
+    }     
+}
 
+export let clearAllCellFromHelpClass = (state) => {
+    // debugger;
+    for (let i = 0; i < state.cellsData.length; i++) {
+        state.cellsData[i].forEach((cellData) => {
+            cellData.helpClass = false;
+        })
+    }    
+}
