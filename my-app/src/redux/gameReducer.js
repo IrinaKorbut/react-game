@@ -1,9 +1,10 @@
 import { isThereIsFirstNumber, setFirstNumber, setSecondNumber, 
     clearNumber, setGameSize, generateCellsData, isAbleCrossNumbers, 
-    crossNumber, isElementLocatedCloseEachOther, recordMove } from "../functions/gameLogic";
+    crossNumber, isElementLocatedCloseEachOther, recordMove, cancelMove } from "../functions/gameLogic";
     import { getAvailableMove, countScore } from "../functions/finishGame";
 
 const CLICK_HANDLER_CELL = 'CLICK_HANDLER_CELL';
+const CLICK_CANCEL_MOVE = 'CLICK_CANCEL_MOVE';
 
 export let initialState = {
     size: 10, // по  дефолту
@@ -52,6 +53,9 @@ export const gameReducer = (state = initialState, action) => {
                 }
             }  
             return state;
+        case CLICK_CANCEL_MOVE:
+            cancelMove(state);
+            return state;
         default:
             return state;
     }
@@ -61,5 +65,12 @@ export const clickHandlerCellActionCreator = (currentEvent) => {
     return {
         type: CLICK_HANDLER_CELL,
         event: currentEvent
+    }
+}
+
+export const clickCancelMoveActionCreator = () => {
+    return {
+        type: CLICK_CANCEL_MOVE,
+        // event: currentEvent
     }
 }

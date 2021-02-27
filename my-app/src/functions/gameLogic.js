@@ -106,5 +106,19 @@ export let recordMove = (state) => {
     console.log(state.numberMatrix) 
 }
 
+export let cancelMove = (state) => {
+    // debugger;
+    let lastMoveFirstNumber = state.doneMoves[state.doneMoves.length - 1][0]
+    let lastMoveSecondNumber = state.doneMoves[state.doneMoves.length - 1][1]
+
+    state.numberMatrix[lastMoveFirstNumber.i][lastMoveFirstNumber.j] = lastMoveFirstNumber.value;
+    state.numberMatrix[lastMoveSecondNumber.i][lastMoveSecondNumber.j] = lastMoveSecondNumber.value;
+
+    state.cellsData[lastMoveFirstNumber.i][lastMoveFirstNumber.j].disableClass = false;
+    state.cellsData[lastMoveSecondNumber.i][lastMoveSecondNumber.j].disableClass = false;
+
+    state.doneMoves.pop();
+}
+
 
 

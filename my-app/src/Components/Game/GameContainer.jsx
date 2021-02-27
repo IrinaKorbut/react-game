@@ -9,7 +9,7 @@ export const GameContainer = (props) => {
         <div className={game.wrapper}>
             <div className={game.main}>     
                     <GameField cellsData={ props.state.cellsData } dispatch={ props.dispatch } />
-                    <GameButtonGroup />
+                    <GameButtonGroup dispatch={ props.dispatch }/>
             </div>
         </div>       
     )
