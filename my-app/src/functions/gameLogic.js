@@ -99,25 +99,25 @@ export let isElementLocatedCloseEachOther = (state) => {
 }
 
 export let recordMove = (state) => {
-    console.log(state.firstNumber)
-    console.log(state.secondNumber)
     state.doneMoves.push([state.firstNumber, state.secondNumber])
-    console.log(state.doneMoves)
-    console.log(state.numberMatrix) 
 }
 
 export let cancelMove = (state) => {
     // debugger;
-    let lastMoveFirstNumber = state.doneMoves[state.doneMoves.length - 1][0]
-    let lastMoveSecondNumber = state.doneMoves[state.doneMoves.length - 1][1]
 
-    state.numberMatrix[lastMoveFirstNumber.i][lastMoveFirstNumber.j] = lastMoveFirstNumber.value;
-    state.numberMatrix[lastMoveSecondNumber.i][lastMoveSecondNumber.j] = lastMoveSecondNumber.value;
+    if (state.doneMoves.length) {
+        let lastMoveFirstNumber = state.doneMoves[state.doneMoves.length - 1][0]
+        let lastMoveSecondNumber = state.doneMoves[state.doneMoves.length - 1][1]
 
-    state.cellsData[lastMoveFirstNumber.i][lastMoveFirstNumber.j].disableClass = false;
-    state.cellsData[lastMoveSecondNumber.i][lastMoveSecondNumber.j].disableClass = false;
+        state.numberMatrix[lastMoveFirstNumber.i][lastMoveFirstNumber.j] = lastMoveFirstNumber.value;
+        state.numberMatrix[lastMoveSecondNumber.i][lastMoveSecondNumber.j] = lastMoveSecondNumber.value;
 
-    state.doneMoves.pop();
+        state.cellsData[lastMoveFirstNumber.i][lastMoveFirstNumber.j].disableClass = false;
+        state.cellsData[lastMoveSecondNumber.i][lastMoveSecondNumber.j].disableClass = false;
+
+        state.doneMoves.pop();
+    }
+    
 }
 
 
