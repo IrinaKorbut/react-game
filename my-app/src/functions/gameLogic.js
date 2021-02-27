@@ -29,8 +29,6 @@ export let generateCellsData = () => {
     }
     initialState.cellsData = gameMatrix;
     initialState.numberMatrix = gameNumberMatrix;
-    console.log(initialState.numberMatrix)
-    console.log(initialState.cellsData)
 }
 
 export let isThereIsFirstNumber = (state) => {
@@ -98,6 +96,14 @@ export let isElementLocatedCloseEachOther = (state) => {
         }
         return true;
     }    
+}
+
+export let recordMove = (state) => {
+    console.log(state.firstNumber)
+    console.log(state.secondNumber)
+    state.doneMoves.push([state.firstNumber, state.secondNumber])
+    console.log(state.doneMoves)
+    console.log(state.numberMatrix) 
 }
 
 

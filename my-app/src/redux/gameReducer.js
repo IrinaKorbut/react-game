@@ -1,6 +1,6 @@
 import { isThereIsFirstNumber, setFirstNumber, setSecondNumber, 
     clearNumber, setGameSize, generateCellsData, isAbleCrossNumbers, 
-    crossNumber, isElementLocatedCloseEachOther } from "../functions/gameLogic";
+    crossNumber, isElementLocatedCloseEachOther, recordMove } from "../functions/gameLogic";
     import { getAvailableMove, countScore } from "../functions/finishGame";
 
 const CLICK_HANDLER_CELL = 'CLICK_HANDLER_CELL';
@@ -11,6 +11,7 @@ export let initialState = {
     numberMatrix: [],
     firstNumber: null,
     secondNumber: null,
+    doneMoves: [],
 }
 
 setGameSize(4);
@@ -25,15 +26,16 @@ export const gameReducer = (state = initialState, action) => {
             const id = action.event.target.getAttribute('data');
             const i = Number(id[0]);
             const j = Number(id[1]);
-            
+            // check is there first number and  current number shouldn't be firs number
             if (isThereIsFirstNumber(state) && (i !==  state.firstNumber.i || j !==  state.firstNumber.j)) {
                 setSecondNumber(state, state.cellsData[i][j]);
                 state.cellsData[i][j].activeClass = !state.cellsData[i][j].activeClass;
                 // debugger;
                 if (isAbleCrossNumbers(state) && isElementLocatedCloseEachOther(state)) {
                     // debugger;
-                    crossNumber(state.numberMatrix, state.firstNumber)
-                    crossNumber(state.numberMatrix, state.secondNumber)                    
+                    crossNumber(state.numberMatrix, state.firstNumber);
+                    crossNumber(state.numberMatrix, state.secondNumber);
+                    recordMove(state);                    
                 }
                 clearNumber(state);
                 if (!getAvailableMove(state)) {
