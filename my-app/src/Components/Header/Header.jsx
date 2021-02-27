@@ -30,7 +30,7 @@ export const Header = () => {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
                 <Nav.Link><Link to='/'>Home</Link></Nav.Link>
-                <Nav.Link><Link to='/game'>New game</Link></Nav.Link>
+                <Nav.Link><Link to='/game'>Game</Link></Nav.Link>
                 <Nav.Link><Link to='/rules'>How to play</Link></Nav.Link>
                 <Nav.Link><Link to='/settings'>Settings</Link></Nav.Link>
                 <Nav.Link><Link to='/statistic'>Statistic</Link></Nav.Link>

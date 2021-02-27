@@ -13,11 +13,6 @@ export let generateCellsData = () => {
         const arr = Array(size).fill({})
         const arrCells = arr.map(function (item, index) {
             let valueCell = Math.floor(Math.random() * 9) + 1;
-
-            // let indexRandom = Math.floor(Math.random() *4) + 1;
-            // valueCell = indexRandom === index ? 0 : valueCell;
-            // let isDisableClass = (valueCell === 0);
-
             gameNumberArr.push(valueCell);
             const cellObj =  {
                 i: i,
