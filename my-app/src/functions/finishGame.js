@@ -1,3 +1,6 @@
+import { initialState } from "../redux/gameReducer";
+
+
 let duplicatedMatrix = (baseMatrix) => {
   const duplicatedMatrix = []
   for (let i = 0; i < baseMatrix.length; i++) {
@@ -29,7 +32,7 @@ const getCoordinatesAvailableMove = (matrix) => {
       for (let k = j + 1; k < matrix[i].length; k++) {
         if (matrix[i][k] !== 0
           && (matrix[i][j] === matrix[i][k]
-            || (matrix[i][j] + matrix[i][k]) === 10)) {
+            || (matrix[i][j] + matrix[i][k]) === (initialState.numbersRange + 1))) {
           return [i, j, i, k]
         }
         else if (matrix[i][k] !== 0) {

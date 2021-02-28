@@ -12,6 +12,8 @@ const CLICK_CANCEL_MOVE = 'CLICK_CANCEL_MOVE';
 const CLICK_SHOW_MOVE = 'CLICK_SHOW_MOVE';
 const CLICK_HANDLE_FIELD = 'CLICK_HANDLE_FIELD';
 const CLICK_HANDLE_CELLS_DESIGN = 'CLICK_HANDLE_CELLS_DESIGN';
+const CLICK_HANDLE_NUMBERS_RANGE = 'CLICK_HANDLE_NUMBERS_RANGE';
+
 
 
 
@@ -19,6 +21,8 @@ export let initialState = {
     size: 6, // по  дефолту
     sizeTitle: 'Field size',
     cellsDesign: 'Cells design',
+    numbersRange: 9,
+    numbersRangeTitle: 'Numbers',
     cellsData: [],
     numberMatrix: [],
     firstNumber: null,
@@ -78,8 +82,15 @@ export const gameReducer = (state = initialState, action) => {
             return state;
         case CLICK_HANDLE_CELLS_DESIGN:
             state.cellsDesign = action.event.target.innerText;
-            changeCellsDesign(state);            
-            console.log('design will be changed')
+            changeCellsDesign(state);
+            return state;
+        case CLICK_HANDLE_NUMBERS_RANGE:
+            state.numbersRange = Number(action.event.target.innerText[2]);
+            state.numbersRangeTitle = action.event.target.innerText;
+            generateCellsData();
+            // changeCellsDesign(state);
+            console.log(state.numbersRange )
+            console.log('Numbers will be changed')
             return state;
         default:
             return state;
@@ -115,6 +126,13 @@ export const clickHandleFieldSize = (currentEvent) => {
 export const clickHandleCellsDesign = (currentEvent) => {
     return {
         type: CLICK_HANDLE_CELLS_DESIGN,
+        event: currentEvent
+    }
+}
+
+export const clickHandleNumbersRange = (currentEvent) => {
+    return {
+        type: CLICK_HANDLE_NUMBERS_RANGE,
         event: currentEvent
     }
 }

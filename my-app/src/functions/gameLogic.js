@@ -8,6 +8,7 @@ export let setGameSize = (size) => {
 
 export let generateCellsData = () => {
     // debugger;
+    const numbersRange = initialState.numbersRange;
     const cellDesign = (initialState.cellsDesign === 'Circle');
     const size = initialState.size;
     const gameMatrix = []
@@ -16,7 +17,7 @@ export let generateCellsData = () => {
         const gameNumberArr = [];
         const arr = Array(size).fill({})
         const arrCells = arr.map(function (item, index) {
-            let valueCell = Math.floor(Math.random() * 9) + 1;
+            let valueCell = Math.floor(Math.random() * numbersRange) + 1;
             gameNumberArr.push(valueCell);
             const cellObj =  {
                 i: i,
@@ -62,9 +63,8 @@ export let clearNumber = (state) => {
 };
 
 export let isAbleCrossNumbers = (state) => {
-    // debugger;
     if (state.firstNumber.value === state.secondNumber.value 
-        || state.firstNumber.value + state.secondNumber.value === 10) {
+        || state.firstNumber.value + state.secondNumber.value === (state.numbersRange + 1)) {
             return true;
         }
 }
