@@ -9,7 +9,7 @@ export const GameContainer = (props) => {
     return (
         <div className={game.wrapper}>
             <div className={game.main}>     
-                    <GameButtonGroupHeader dispatch={ props.dispatch }/> 
+                    <GameButtonGroupHeader state={ props.state } dispatch={ props.dispatch }/> 
                     <GameField state={ props.state } dispatch={ props.dispatch } />
                     <GameButtonGroupFooter dispatch={ props.dispatch }/>
             </div>

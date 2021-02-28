@@ -9,10 +9,11 @@ import { getAvailableMove, countScore } from "../functions/finishGame";
 const CLICK_HANDLER_CELL = 'CLICK_HANDLER_CELL';
 const CLICK_CANCEL_MOVE = 'CLICK_CANCEL_MOVE';
 const CLICK_SHOW_MOVE = 'CLICK_SHOW_MOVE';
-
+const CLICK_HANDLE_FIELD = 'CLICK_HANDLE_FIELD';
 
 export let initialState = {
-    size: 10, // по  дефолту
+    size: 6, // по  дефолту
+    sizeTitle: 'Field size',
     cellsData: [],
     numberMatrix: [],
     firstNumber: null,
@@ -20,7 +21,7 @@ export let initialState = {
     doneMoves: [],
 }
 
-setGameSize(10);
+setGameSize(6);
 generateCellsData();
 
 export const gameReducer = (state = initialState, action) => {
@@ -67,6 +68,13 @@ export const gameReducer = (state = initialState, action) => {
             // debugger;
             showMove(state);
             return state;
+        case CLICK_HANDLE_FIELD:
+            if (Number(action.event.target.innerText.split('x')[0])) {
+                setGameSize(Number(action.event.target.innerText.split('x')[0]));
+                generateCellsData();
+                state.sizeTitle = action.event.target.innerText;
+            } 
+            return state;
         default:
             return state;
     }
@@ -88,5 +96,12 @@ export const clickCancelMoveActionCreator = () => {
 export const clickShowMoveActionCreator = () => {
     return {
         type: CLICK_SHOW_MOVE,
+    }
+}
+
+export const clickHandleFieldSize = (currentEvent) => {
+    return {
+        type: CLICK_HANDLE_FIELD,
+        event: currentEvent
     }
 }

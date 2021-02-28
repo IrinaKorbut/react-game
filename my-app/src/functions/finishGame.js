@@ -1,40 +1,40 @@
 let duplicatedMatrix = (baseMatrix) => {
-    const duplicatedMatrix = []
-    for (let i = 0; i < baseMatrix.length; i++) {
-        duplicatedMatrix.push([])
-        for (let j = 0; j < baseMatrix[i].length; j++) {
-                duplicatedMatrix[i].push(baseMatrix[i][j])
-        }
+  const duplicatedMatrix = []
+  for (let i = 0; i < baseMatrix.length; i++) {
+    duplicatedMatrix.push([])
+    for (let j = 0; j < baseMatrix[i].length; j++) {
+      duplicatedMatrix[i].push(baseMatrix[i][j])
     }
-    return duplicatedMatrix;
+  }
+  return duplicatedMatrix;
 }
 
 let transposeMatrix = (matrix) => {
-    const transposedMatrix = [];
+  const transposedMatrix = [];
   for (let i = 0; i < matrix.length; i++) {
-  	transposedMatrix.push([])
+    transposedMatrix.push([])
   }
-  
+
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[i].length; j++) {
-    	transposedMatrix[j].push(matrix[i][j]);
+      transposedMatrix[j].push(matrix[i][j]);
     }
   }
   return transposedMatrix;
 }
 
 const getCoordinatesAvailableMove = (matrix) => {
-	for (let i = 0; i < matrix.length; i++) {
-  	for (let j = 0; j < matrix[i].length; j++) {
-      for (let k = j + 1; k < matrix[i].length; k ++){
-        if (matrix[i][k] !== 0 
-        && (matrix[i][j] === matrix[i][k] 
-        || (matrix[i][j] + matrix[i][k]) === 10)) {
-          	return [i, j, i, k]
-         }  
-       	else if (matrix[i][k] !== 0 ) {
-            break;
-         }    
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      for (let k = j + 1; k < matrix[i].length; k++) {
+        if (matrix[i][k] !== 0
+          && (matrix[i][j] === matrix[i][k]
+            || (matrix[i][j] + matrix[i][k]) === 10)) {
+          return [i, j, i, k]
+        }
+        else if (matrix[i][k] !== 0) {
+          break;
+        }
       }
     }
   }
@@ -42,32 +42,31 @@ const getCoordinatesAvailableMove = (matrix) => {
 }
 
 export let getAvailableMove = (state) => {
-    // debugger;
-    const baseMatrix = duplicatedMatrix(state.numberMatrix);
-    const transposedMatrix = transposeMatrix(baseMatrix);
-    let coordinatesAvailableMove = null;
-    if (getCoordinatesAvailableMove(baseMatrix)) {
-      coordinatesAvailableMove = getCoordinatesAvailableMove(baseMatrix)
-    } else if (getCoordinatesAvailableMove(transposedMatrix)){
-      let coordinatesAvailableMoveInTransposeMatrix = getCoordinatesAvailableMove(transposedMatrix);
-      coordinatesAvailableMove = [];
-      coordinatesAvailableMove.push(coordinatesAvailableMoveInTransposeMatrix[1]);
-      coordinatesAvailableMove.push(coordinatesAvailableMoveInTransposeMatrix[0]);
-      coordinatesAvailableMove.push(coordinatesAvailableMoveInTransposeMatrix[3]);
-      coordinatesAvailableMove.push(coordinatesAvailableMoveInTransposeMatrix[2]);
-    }
-    console.log(coordinatesAvailableMove)
-    return coordinatesAvailableMove;
+  // debugger;
+  const baseMatrix = duplicatedMatrix(state.numberMatrix);
+  const transposedMatrix = transposeMatrix(baseMatrix);
+  let coordinatesAvailableMove = null;
+  if (getCoordinatesAvailableMove(baseMatrix)) {
+    coordinatesAvailableMove = getCoordinatesAvailableMove(baseMatrix)
+  } else if (getCoordinatesAvailableMove(transposedMatrix)) {
+    let coordinatesAvailableMoveInTransposeMatrix = getCoordinatesAvailableMove(transposedMatrix);
+    coordinatesAvailableMove = [];
+    coordinatesAvailableMove.push(coordinatesAvailableMoveInTransposeMatrix[1]);
+    coordinatesAvailableMove.push(coordinatesAvailableMoveInTransposeMatrix[0]);
+    coordinatesAvailableMove.push(coordinatesAvailableMoveInTransposeMatrix[3]);
+    coordinatesAvailableMove.push(coordinatesAvailableMoveInTransposeMatrix[2]);
+  }
+  return coordinatesAvailableMove;
 }
 
 export let countScore = (state) => {
-    const finishedMatrix = duplicatedMatrix(state.numberMatrix);
-// debugger;
-    let matrixArrSum = finishedMatrix.map((array) => {
-      return array.reduce((accum, current) => accum + current, 0)
-    })
-    let score = matrixArrSum.reduce((accum, current) => 	accum + current, 0)
-    return score;
+  const finishedMatrix = duplicatedMatrix(state.numberMatrix);
+  // debugger;
+  let matrixArrSum = finishedMatrix.map((array) => {
+    return array.reduce((accum, current) => accum + current, 0)
+  })
+  let score = matrixArrSum.reduce((accum, current) => accum + current, 0)
+  return score;
 }
 
 

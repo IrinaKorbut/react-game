@@ -2,10 +2,13 @@ import { initialState } from "../redux/gameReducer";
 import { getAvailableMove } from "./finishGame";
 
 export let setGameSize = (size) => {
+    // debugger;
     initialState.size = size;
 }
 
 export let generateCellsData = () => {
+    // debugger;
+
     const size = initialState.size;
     const gameMatrix = []
     const gameNumberMatrix = [];    
