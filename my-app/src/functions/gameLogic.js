@@ -26,6 +26,7 @@ export let generateCellsData = () => {
                 activeClass: false,
                 disableClass: false,
                 helpClass: false,
+                circleClass: false,
             };
             return cellObj;
         });

@@ -5,15 +5,19 @@ import {
     showMove, clearAllCellFromHelpClass
 } from "../functions/gameLogic";
 import { getAvailableMove, countScore } from "../functions/finishGame";
+import { changeCellsDesign } from "../functions/helpFunctions";
 
 const CLICK_HANDLER_CELL = 'CLICK_HANDLER_CELL';
 const CLICK_CANCEL_MOVE = 'CLICK_CANCEL_MOVE';
 const CLICK_SHOW_MOVE = 'CLICK_SHOW_MOVE';
 const CLICK_HANDLE_FIELD = 'CLICK_HANDLE_FIELD';
+const CLICK_HANDLE_CELLS_DESIGN = 'CLICK_HANDLE_CELLS_DESIGN';
+
 
 export let initialState = {
     size: 6, // по  дефолту
     sizeTitle: 'Field size',
+    cellsDesign: 'Cells design',
     cellsData: [],
     numberMatrix: [],
     firstNumber: null,
@@ -56,24 +60,25 @@ export const gameReducer = (state = initialState, action) => {
                     state.cellsData[i][j].activeClass = !state.cellsData[i][j].activeClass;
                 } else {
                     clearNumber(state);
-                }                
+                }
             }
-            // debugger;
             clearAllCellFromHelpClass(state)
             return state;
         case CLICK_CANCEL_MOVE:
             cancelMove(state);
             return state;
         case CLICK_SHOW_MOVE:
-            // debugger;
             showMove(state);
             return state;
         case CLICK_HANDLE_FIELD:
-            if (Number(action.event.target.innerText.split('x')[0])) {
-                setGameSize(Number(action.event.target.innerText.split('x')[0]));
-                generateCellsData();
-                state.sizeTitle = action.event.target.innerText;
-            } 
+            setGameSize(Number(action.event.target.innerText.split('x')[0]));
+            generateCellsData();
+            state.sizeTitle = action.event.target.innerText;
+            return state;
+        case CLICK_HANDLE_CELLS_DESIGN:
+            state.cellsDesign = action.event.target.innerText;
+            changeCellsDesign(state);            
+            console.log('design will be changed')
             return state;
         default:
             return state;
@@ -102,6 +107,13 @@ export const clickShowMoveActionCreator = () => {
 export const clickHandleFieldSize = (currentEvent) => {
     return {
         type: CLICK_HANDLE_FIELD,
+        event: currentEvent
+    }
+}
+
+export const clickHandleCellsDesign = (currentEvent) => {
+    return {
+        type: CLICK_HANDLE_CELLS_DESIGN,
         event: currentEvent
     }
 }

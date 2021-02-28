@@ -10,21 +10,22 @@ export const GameCell = (props) => {
         props.dispatch(clickHandlerCellActionCreator(currentEvent))
     }
 
-    const gameSize = props.state.size;
+    const gameSize = props.size;
     const cellSizeStyle = 100 / gameSize;
 
     const cellStyle = {
         width: `${cellSizeStyle}%`,
         height: `${cellSizeStyle}%`,        
     };
-
+    // debugger;
     let isActiveClass = props.activeClass ? game.active : '';
     let isDisableClass = props.disableClass ? game.disable : '';
     let isHelpClass = props.helpClass ? game.help : '';
+    let isCircleClass = props.circleClass ? game.cellCircle : '';
 
     return (
         <div             
-            className={`${game.cell} ${isActiveClass} ${isDisableClass} ${isHelpClass}`} 
+            className={`${game.cell} ${isActiveClass} ${isDisableClass} ${isHelpClass} ${isCircleClass}`} 
             style={ cellStyle }
             onClick={ clickHandlerCell } 
             data={ props.data }>

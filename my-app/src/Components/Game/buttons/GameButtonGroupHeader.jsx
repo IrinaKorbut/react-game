@@ -1,11 +1,15 @@
 import { ButtonToolbar, ButtonGroup, DropdownButton, Dropdown } from 'react-bootstrap';
-import { clickHandleFieldSize } from '../../../redux/gameReducer';
+import { clickHandleFieldSize, clickHandleCellsDesign } from '../../../redux/gameReducer';
 
 
 export const GameButtonGroupHeader = (props) => {
 
     let handleFieldSize = (currentEvent) => {
         props.dispatch(clickHandleFieldSize(currentEvent));
+    }
+
+    let handleCellsDesign = (currentEvent) => {
+        props.dispatch(clickHandleCellsDesign(currentEvent));
     }
 
     // let clickShowMove = () => {
@@ -15,10 +19,11 @@ export const GameButtonGroupHeader = (props) => {
     return (
         <ButtonToolbar aria-label="Toolbar with button groups">
             <ButtonGroup className="mr-2" size="sm" aria-label="First group">
-                <DropdownButton variant="secondary" className="mr-2" size="sm" as={ButtonGroup} title={props.state.sizeTitle} id="bg-nested-dropdown">
-                    <Dropdown.Item eventKey="1" selected value="6" onClick={ handleFieldSize } >6x6</Dropdown.Item>
-                    <Dropdown.Item eventKey="2" value="8" onClick={ handleFieldSize } >8x8</Dropdown.Item>
-                    <Dropdown.Item eventKey="3" value="10" onClick={ handleFieldSize } >10x10</Dropdown.Item>
+                <DropdownButton variant="secondary" className="mr-2" 
+                    size="sm" as={ButtonGroup} title={props.state.sizeTitle} id="bg-nested-dropdown">
+                    <Dropdown.Item eventKey="1" onClick={ handleFieldSize } >6x6</Dropdown.Item>
+                    <Dropdown.Item eventKey="2" onClick={ handleFieldSize } >8x8</Dropdown.Item>
+                    <Dropdown.Item eventKey="3" onClick={ handleFieldSize } >10x10</Dropdown.Item>
                 </DropdownButton>
           {/* <select onChange={ handleFieldSize }>
             <option value="">Game field...</option>
@@ -49,15 +54,16 @@ export const GameButtonGroupHeader = (props) => {
             </select>
             </ButtonGroup>
             <ButtonGroup className="mr-2" size="sm" aria-label="First group">
-                {/* <DropdownButton variant="secondary" className="mr-2" size="sm" as={ButtonGroup} title="Cells design" id="bg-nested-dropdown">
-                    <Dropdown.Item eventKey="11" value="Circle">Circle</Dropdown.Item>
-                    <Dropdown.Item eventKey="12" value="Square">Square</Dropdown.Item>
-                </DropdownButton> */}
-            <select >
+                <DropdownButton variant="secondary" className="mr-2" 
+                    size="sm" as={ButtonGroup} title={props.state.cellsDesign} id="bg-nested-dropdown">
+                    <Dropdown.Item eventKey="11" onClick={ handleCellsDesign }>Circle</Dropdown.Item>
+                    <Dropdown.Item eventKey="12" onClick={ handleCellsDesign }>Square</Dropdown.Item>
+                </DropdownButton>
+            {/* <select >
                 <option value="">Cells type</option>
                 <option value="circle">Circle</option>
                 <option value="square">Square</option>
-            </select>
+            </select> */}
             </ButtonGroup>
         </ButtonToolbar>
     )
