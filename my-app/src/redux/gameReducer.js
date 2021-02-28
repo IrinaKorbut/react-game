@@ -14,6 +14,7 @@ const CLICK_HANDLE_FIELD = 'CLICK_HANDLE_FIELD';
 const CLICK_HANDLE_CELLS_DESIGN = 'CLICK_HANDLE_CELLS_DESIGN';
 
 
+
 export let initialState = {
     size: 6, // по  дефолту
     sizeTitle: 'Field size',

@@ -8,7 +8,7 @@ export let setGameSize = (size) => {
 
 export let generateCellsData = () => {
     // debugger;
-
+    const cellDesign = (initialState.cellsDesign === 'Circle');
     const size = initialState.size;
     const gameMatrix = []
     const gameNumberMatrix = [];    
@@ -26,7 +26,7 @@ export let generateCellsData = () => {
                 activeClass: false,
                 disableClass: false,
                 helpClass: false,
-                circleClass: false,
+                circleClass: cellDesign,
             };
             return cellObj;
         });
