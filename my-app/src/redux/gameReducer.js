@@ -58,15 +58,22 @@ export const gameReducer = (state = initialState, action) => {
                     recordMove(state);
                 }
                 clearNumber(state);
+                // debugger;
                 if (!getAvailableMove(state)) {
-                    console.log('scoreLS', JSON.parse(localStorage.getItem('scoreData')))
+                    // debugger;
                     let score = countScore(state)
+                    setTimeout(() => {
+                        let userName;
+                        if (score) {
+                            userName = prompt(`Your score is: ${score}. Enter your name to save your score:`, 'Player');
+                        } else {
+                            userName = prompt(`You win! Your score is: ${score}. Enter your name to save your score:`, 'Winner');
+                        }
+                        putUserScoreToScoreState(initialScoreState, userName, score);
+                    })
                     // debugger;
                     //show modal window         
-                    setTimeout(() => {
-                        const userName = prompt(`Game over. Your score is: ${score}. Enter your name to save your score:`, 'Bob');
-                        putUserScoreToScoreState(initialScoreState, userName, score);
-                    }) 
+
                 }
                 //check is finish game
             } else {
