@@ -1,9 +1,11 @@
 export const TableRow = (props) => {
+    // debugger;
     return (
-        <tr>
+        <tr >
             <td>{props.number}</td>
             <td>{props.nickName}</td>
-            <td>{props.time}</td>
+            <td>{props.fieldSize}</td>
+            <td>{props.numbersRange}</td>
             <td>{props.score}</td>
         </tr>
     )

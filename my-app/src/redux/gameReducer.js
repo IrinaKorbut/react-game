@@ -69,7 +69,7 @@ export const gameReducer = (state = initialState, action) => {
                         } else {
                             userName = prompt(`You win! Your score is: ${score}. Enter your name to save your score:`, 'Winner');
                         }
-                        putUserScoreToScoreState(initialScoreState, userName, score);
+                        putUserScoreToScoreState(state, initialScoreState, userName, score);
                     })
                     // debugger;
                     //show modal window         

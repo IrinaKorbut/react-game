@@ -7,11 +7,13 @@ export let changeCellsDesign = (state) => {
     })
 }
 
-export let putUserScoreToScoreState = (scoreState, userName, score) => {
+export let putUserScoreToScoreState = (gameState, scoreState, userName, score) => {
     // debugger;
     const scoreData = {
         userName: userName,
-        score: score
+        score: score,
+        sizeTitle: gameState.sizeTitle,
+        numbersRangeTitle: gameState.numbersRangeTitle
     }
     scoreState.scoreData.push(scoreData);
     localStorage.setItem('scoreData', JSON.stringify(scoreState.scoreData))
@@ -20,3 +22,16 @@ export let putUserScoreToScoreState = (scoreState, userName, score) => {
 export let deleteVariableFromLocalStorage = (variable) => {
     localStorage.removeItem(variable)
 }
+
+
+export let compareUsersScore = ( a, b ) => {
+    if ( a.score < b.score ){
+      return -1;
+    }
+    if ( a.score > b.score ){
+      return 1;
+    }
+    return 0;
+  }
+  
+ 

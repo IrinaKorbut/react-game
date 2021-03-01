@@ -21,10 +21,15 @@ function App(props) {
           <Route path='/game' render={() => <Game 
             game={ props.state.game } 
             score={ props.state.score } 
-            dispatch={ props.dispatch }/>} />
+            dispatch={ props.dispatch }/>} 
+          />
           <Route path='/rules' render={() => <Rules />} />
           <Route path='/settings' render={() => <Settings />} />
-          <Route path='/statistic' render={() => <Statistic />} />
+          <Route path='/statistic' render={() => <Statistic 
+            score={ props.state.score }
+            game={ props.state.game } 
+            />} 
+          />
         </Switch>
         <Footer/>
       </BrowserRouter>        

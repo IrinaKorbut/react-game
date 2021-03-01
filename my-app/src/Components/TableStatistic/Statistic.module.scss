@@ -1,10 +1,27 @@
 .container {
-    height: 80vh;
-    display: flex; 
-    flex-direction: column;
-    justify-content: center;      
+    height: 77vh;
+    margin: 15px 0 ;     
+    overflow-y: scroll;
+    padding: 0 !important;
 }
 
 .custom {
-    height: 50%; 
+    margin-bottom: 0 !important;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #5a5a5aea; 
+  }
+   
+  ::-webkit-scrollbar-thumb {
+    background: #222222;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #000000; 
+    cursor: pointer;
+  }

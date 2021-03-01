@@ -1,7 +1,7 @@
-import { TableStatictic } from './TableStatictic'
+import { TableStatistic } from './TableStatistic'
 
-export const Statistic = () => {
+export const Statistic = (props) => {
     return (
-        <TableStatictic/>
+        <TableStatistic scoreData={props.score.scoreData}/>
     )
 }
