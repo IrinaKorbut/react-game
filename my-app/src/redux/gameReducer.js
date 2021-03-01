@@ -1,3 +1,4 @@
+import { initialScoreState } from './scoreReducer'
 import {
     isThereIsFirstNumber, setFirstNumber, setSecondNumber,
     clearNumber, setGameSize, generateCellsData, isAbleCrossNumbers,
@@ -5,7 +6,7 @@ import {
     showMove, clearAllCellFromHelpClass
 } from "../functions/gameLogic";
 import { getAvailableMove, countScore } from "../functions/finishGame";
-import { changeCellsDesign } from "../functions/helpFunctions";
+import { changeCellsDesign, putUserScoreToScoreState } from "../functions/helpFunctions";
 
 const CLICK_HANDLER_CELL = 'CLICK_HANDLER_CELL';
 const CLICK_CANCEL_MOVE = 'CLICK_CANCEL_MOVE';
@@ -55,9 +56,17 @@ export const gameReducer = (state = initialState, action) => {
                 }
                 clearNumber(state);
                 if (!getAvailableMove(state)) {
+                    console.log('scoreLS', JSON.parse(localStorage.getItem('scoreData')))
                     let score = countScore(state)
-                    setTimeout(() => { alert(`Game over. Your score is: ${score}`) }, 100)
-                }
+                    // debugger;
+                    //show modal window                  
+                    const userName = prompt(`Game over. Your score is: ${score}. Enter your name to save your score:`, 'Bob');
+                    putUserScoreToScoreState(initialScoreState, userName, score);     
+                    console.log('state', state)
+                    console.log('ScoreState', initialScoreState)     
+                    console.log('scoreLS', JSON.parse(localStorage.getItem('scoreData')))
+
+                }                
                 //check is finish game
             } else {
                 if (!isThereIsFirstNumber(state)) {
@@ -67,7 +76,8 @@ export const gameReducer = (state = initialState, action) => {
                     clearNumber(state);
                 }
             }
-            clearAllCellFromHelpClass(state)
+            clearAllCellFromHelpClass(state);          
+
             return state;
         case CLICK_CANCEL_MOVE:
             cancelMove(state);
@@ -88,9 +98,6 @@ export const gameReducer = (state = initialState, action) => {
             state.numbersRange = Number(action.event.target.innerText[2]);
             state.numbersRangeTitle = action.event.target.innerText;
             generateCellsData();
-            // changeCellsDesign(state);
-            console.log(state.numbersRange )
-            console.log('Numbers will be changed')
             return state;
         default:
             return state;

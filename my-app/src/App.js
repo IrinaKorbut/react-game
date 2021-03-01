@@ -20,6 +20,7 @@ function App(props) {
           <Route exact path='/' render={() => <Home />} />
           <Route path='/game' render={() => <Game 
             game={ props.state.game } 
+            score={ props.state.score } 
             dispatch={ props.dispatch }/>} />
           <Route path='/rules' render={() => <Rules />} />
           <Route path='/settings' render={() => <Settings />} />

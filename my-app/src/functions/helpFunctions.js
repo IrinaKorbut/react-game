@@ -6,3 +6,13 @@ export let changeCellsDesign = (state) => {
         })
     })
 }
+
+export let putUserScoreToScoreState = (scoreState, userName, score) => {
+    debugger;
+    const scoreData = {
+        userName: userName,
+        score: score
+    }
+    scoreState.scoreData.push(scoreData);
+    localStorage.setItem('scoreData', JSON.stringify(scoreState.scoreData))
+}

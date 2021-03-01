@@ -25,12 +25,6 @@ export const GameButtonGroupHeader = (props) => {
                     <Dropdown.Item eventKey="2" onClick={ handleFieldSize } >8x8</Dropdown.Item>
                     <Dropdown.Item eventKey="3" onClick={ handleFieldSize } >10x10</Dropdown.Item>
                 </DropdownButton>
-          {/* <select onChange={ handleFieldSize }>
-            <option value="">Game field...</option>
-            <option value="6" >6x6</option>
-            <option value="8" >8x8</option>
-            <option value="10" >10x10</option>
-          </select> */}
             </ButtonGroup>
             <ButtonGroup className="mr-2" size="sm" aria-label="First group">
                 <DropdownButton variant="secondary" className="mr-2" size="sm" 
@@ -43,16 +37,6 @@ export const GameButtonGroupHeader = (props) => {
                     <Dropdown.Item eventKey="9" onClick={ handleNumbersRange } >1-8</Dropdown.Item>
                     <Dropdown.Item eventKey="10" onClick={ handleNumbersRange } >1-9</Dropdown.Item>
                 </DropdownButton>
-            {/* <select >
-                <option value="">Numbers</option>
-                <option value="3">1-3</option>
-                <option value="4">1-4</option>
-                <option value="5">1-5</option>
-                <option value="6">1-6</option>
-                <option value="7">1-7</option>
-                <option value="8">1-8</option>
-                <option value="9">1-9</option>
-            </select> */}
             </ButtonGroup>
             <ButtonGroup className="mr-2" size="sm" aria-label="First group">
                 <DropdownButton variant="secondary" className="mr-2" 
