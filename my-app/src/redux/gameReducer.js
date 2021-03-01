@@ -6,7 +6,7 @@ import {
     showMove, clearAllCellFromHelpClass
 } from "../functions/gameLogic";
 import { getAvailableMove, countScore } from "../functions/finishGame";
-import { changeCellsDesign, putUserScoreToScoreState } from "../functions/helpFunctions";
+import { changeCellsDesign, putUserScoreToScoreState, deleteVariableFromLocalStorage } from "../functions/helpFunctions";
 
 const CLICK_HANDLER_CELL = 'CLICK_HANDLER_CELL';
 const CLICK_CANCEL_MOVE = 'CLICK_CANCEL_MOVE';
@@ -14,32 +14,22 @@ const CLICK_SHOW_MOVE = 'CLICK_SHOW_MOVE';
 const CLICK_HANDLE_FIELD = 'CLICK_HANDLE_FIELD';
 const CLICK_HANDLE_CELLS_DESIGN = 'CLICK_HANDLE_CELLS_DESIGN';
 const CLICK_HANDLE_NUMBERS_RANGE = 'CLICK_HANDLE_NUMBERS_RANGE';
-
-let gameSize = localStorage.getItem('gameSize') ? localStorage.getItem('gameSize') : 6;
-let gameSizeTitle = localStorage.getItem('gameSizeTitle') ? localStorage.getItem('gameSizeTitle') : 'Field size';
-let gameCellsDesign = localStorage.getItem('gameCellsDesign') ? localStorage.getItem('gameCellsDesign') : 'Cells design';
-let gameNumbersRange = localStorage.getItem('gameNumbersRange') ? localStorage.getItem('gameNumbersRange') : 9;
-let gameNumbersRangeTitle = localStorage.getItem('gameNumbersRangeTitle') ? localStorage.getItem('gameNumbersRangeTitle') : 'Numbers';
-let gameCellsData = JSON.parse(localStorage.getItem('gameCellsData')) ? JSON.parse(localStorage.getItem('gameCellsData')) : [];
-let gameNumberMatrix = localStorage.getItem('gameNumberMatrix') ? localStorage.getItem('gameNumberMatrix') : [];
-let gameFirstNumber = localStorage.getItem('gameFirstNumber') ? localStorage.getItem('gameFirstNumber') : null;
-let gameSecondNumber = localStorage.getItem('gameSecondNumber') ? localStorage.getItem('gameSecondNumber') : null;
-let gameDoneMoves = JSON.parse(localStorage.getItem('gameDoneMoves')) ? JSON.parse(localStorage.getItem('gameDoneMoves')) : [];
+const CLICK_NEW_GAME = 'CLICK_NEW_GAME';
 
 let initialStateDefault = {
-    size: gameSize, // по  дефолту
-    sizeTitle: gameSizeTitle,
-    cellsDesign: gameCellsDesign,
-    numbersRange: gameNumbersRange,
-    numbersRangeTitle: gameNumbersRangeTitle,
-    cellsData: gameCellsData,
-    numberMatrix: gameNumberMatrix,
-    firstNumber: gameFirstNumber,
-    secondNumber: gameSecondNumber,
-    doneMoves: gameDoneMoves,
+    size: 6, // по  дефолту
+    sizeTitle: 'Field size',
+    cellsDesign: 'Cells design',
+    numbersRange: 9,
+    numbersRangeTitle: 'Numbers',
+    cellsData: [],
+    numberMatrix: [],
+    firstNumber: null,
+    secondNumber: null,
+    doneMoves: [],
 }
-export let initialState = JSON.parse(localStorage.getItem('initialStateLocalStorage')) 
-    ? JSON.parse(localStorage.getItem('initialStateLocalStorage')) 
+export let initialState = JSON.parse(localStorage.getItem('initialStateLocalStorage'))
+    ? JSON.parse(localStorage.getItem('initialStateLocalStorage'))
     : initialStateDefault;
 
 if (!JSON.parse(localStorage.getItem('initialStateLocalStorage'))) {
@@ -72,14 +62,12 @@ export const gameReducer = (state = initialState, action) => {
                     console.log('scoreLS', JSON.parse(localStorage.getItem('scoreData')))
                     let score = countScore(state)
                     // debugger;
-                    //show modal window                  
-                    const userName = prompt(`Game over. Your score is: ${score}. Enter your name to save your score:`, 'Bob');
-                    putUserScoreToScoreState(initialScoreState, userName, score);     
-                    console.log('state', state)
-                    console.log('ScoreState', initialScoreState)     
-                    console.log('scoreLS', JSON.parse(localStorage.getItem('scoreData')))
-
-                }                
+                    //show modal window         
+                    setTimeout(() => {
+                        const userName = prompt(`Game over. Your score is: ${score}. Enter your name to save your score:`, 'Bob');
+                        putUserScoreToScoreState(initialScoreState, userName, score);
+                    }) 
+                }
                 //check is finish game
             } else {
                 if (!isThereIsFirstNumber(state)) {
@@ -89,7 +77,7 @@ export const gameReducer = (state = initialState, action) => {
                     clearNumber(state);
                 }
             }
-            clearAllCellFromHelpClass(state);          
+            clearAllCellFromHelpClass(state);
             localStorage.setItem('initialStateLocalStorage', JSON.stringify(state))
             return state;
         case CLICK_CANCEL_MOVE:
@@ -114,6 +102,11 @@ export const gameReducer = (state = initialState, action) => {
         case CLICK_HANDLE_NUMBERS_RANGE:
             state.numbersRange = Number(action.event.target.innerText[2]);
             state.numbersRangeTitle = action.event.target.innerText;
+            generateCellsData();
+            localStorage.setItem('initialStateLocalStorage', JSON.stringify(state))
+            return state;
+        case CLICK_NEW_GAME:
+            deleteVariableFromLocalStorage('initialStateLocalStorage');
             generateCellsData();
             localStorage.setItem('initialStateLocalStorage', JSON.stringify(state))
             return state;
@@ -162,3 +155,10 @@ export const clickHandleNumbersRange = (currentEvent) => {
         event: currentEvent
     }
 }
+
+export const clickNewGameActionCreator = () => {
+    return {
+        type: CLICK_NEW_GAME,
+    }
+}
+

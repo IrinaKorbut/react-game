@@ -1,5 +1,5 @@
 import { ButtonToolbar, ButtonGroup, Button } from 'react-bootstrap';
-import { clickCancelMoveActionCreator, clickShowMoveActionCreator } from '../../../redux/gameReducer';
+import { clickCancelMoveActionCreator, clickShowMoveActionCreator, clickNewGameActionCreator } from '../../../redux/gameReducer';
 
 
 export const GameButtonGroupFooter = (props) => {
@@ -11,6 +11,11 @@ export const GameButtonGroupFooter = (props) => {
     let clickShowMove = () => {
         props.dispatch(clickShowMoveActionCreator())
     }
+
+    let clickNewGame = () => {
+        props.dispatch(clickNewGameActionCreator())
+    }
+
 
     return (
         <ButtonToolbar aria-label="Toolbar with button groups">
@@ -27,7 +32,7 @@ export const GameButtonGroupFooter = (props) => {
                 >Show move</Button>
             </ButtonGroup>
             <ButtonGroup size="sm" aria-label="Third  group">
-                <Button variant="secondary">Start New Game</Button>
+                <Button variant="secondary" onClick={ clickNewGame }>New Game</Button>
             </ButtonGroup>
         </ButtonToolbar>
     )
