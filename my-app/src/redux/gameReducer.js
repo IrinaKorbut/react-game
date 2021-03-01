@@ -15,24 +15,37 @@ const CLICK_HANDLE_FIELD = 'CLICK_HANDLE_FIELD';
 const CLICK_HANDLE_CELLS_DESIGN = 'CLICK_HANDLE_CELLS_DESIGN';
 const CLICK_HANDLE_NUMBERS_RANGE = 'CLICK_HANDLE_NUMBERS_RANGE';
 
+let gameSize = localStorage.getItem('gameSize') ? localStorage.getItem('gameSize') : 6;
+let gameSizeTitle = localStorage.getItem('gameSizeTitle') ? localStorage.getItem('gameSizeTitle') : 'Field size';
+let gameCellsDesign = localStorage.getItem('gameCellsDesign') ? localStorage.getItem('gameCellsDesign') : 'Cells design';
+let gameNumbersRange = localStorage.getItem('gameNumbersRange') ? localStorage.getItem('gameNumbersRange') : 9;
+let gameNumbersRangeTitle = localStorage.getItem('gameNumbersRangeTitle') ? localStorage.getItem('gameNumbersRangeTitle') : 'Numbers';
+let gameCellsData = JSON.parse(localStorage.getItem('gameCellsData')) ? JSON.parse(localStorage.getItem('gameCellsData')) : [];
+let gameNumberMatrix = localStorage.getItem('gameNumberMatrix') ? localStorage.getItem('gameNumberMatrix') : [];
+let gameFirstNumber = localStorage.getItem('gameFirstNumber') ? localStorage.getItem('gameFirstNumber') : null;
+let gameSecondNumber = localStorage.getItem('gameSecondNumber') ? localStorage.getItem('gameSecondNumber') : null;
+let gameDoneMoves = JSON.parse(localStorage.getItem('gameDoneMoves')) ? JSON.parse(localStorage.getItem('gameDoneMoves')) : [];
 
-
-
-export let initialState = {
-    size: 6, // по  дефолту
-    sizeTitle: 'Field size',
-    cellsDesign: 'Cells design',
-    numbersRange: 9,
-    numbersRangeTitle: 'Numbers',
-    cellsData: [],
-    numberMatrix: [],
-    firstNumber: null,
-    secondNumber: null,
-    doneMoves: [],
+let initialStateDefault = {
+    size: gameSize, // по  дефолту
+    sizeTitle: gameSizeTitle,
+    cellsDesign: gameCellsDesign,
+    numbersRange: gameNumbersRange,
+    numbersRangeTitle: gameNumbersRangeTitle,
+    cellsData: gameCellsData,
+    numberMatrix: gameNumberMatrix,
+    firstNumber: gameFirstNumber,
+    secondNumber: gameSecondNumber,
+    doneMoves: gameDoneMoves,
 }
+export let initialState = JSON.parse(localStorage.getItem('initialStateLocalStorage')) 
+    ? JSON.parse(localStorage.getItem('initialStateLocalStorage')) 
+    : initialStateDefault;
 
-setGameSize(6);
-generateCellsData();
+if (!JSON.parse(localStorage.getItem('initialStateLocalStorage'))) {
+    setGameSize(6);
+    generateCellsData();
+}
 
 export const gameReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -77,29 +90,35 @@ export const gameReducer = (state = initialState, action) => {
                 }
             }
             clearAllCellFromHelpClass(state);          
-
+            localStorage.setItem('initialStateLocalStorage', JSON.stringify(state))
             return state;
         case CLICK_CANCEL_MOVE:
             cancelMove(state);
+            localStorage.setItem('initialStateLocalStorage', JSON.stringify(state))
             return state;
         case CLICK_SHOW_MOVE:
             showMove(state);
+            localStorage.setItem('initialStateLocalStorage', JSON.stringify(state))
             return state;
         case CLICK_HANDLE_FIELD:
             setGameSize(Number(action.event.target.innerText.split('x')[0]));
             generateCellsData();
             state.sizeTitle = action.event.target.innerText;
+            localStorage.setItem('initialStateLocalStorage', JSON.stringify(state))
             return state;
         case CLICK_HANDLE_CELLS_DESIGN:
             state.cellsDesign = action.event.target.innerText;
             changeCellsDesign(state);
+            localStorage.setItem('initialStateLocalStorage', JSON.stringify(state))
             return state;
         case CLICK_HANDLE_NUMBERS_RANGE:
             state.numbersRange = Number(action.event.target.innerText[2]);
             state.numbersRangeTitle = action.event.target.innerText;
             generateCellsData();
+            localStorage.setItem('initialStateLocalStorage', JSON.stringify(state))
             return state;
         default:
+            localStorage.setItem('initialStateLocalStorage', JSON.stringify(state))
             return state;
     }
 }
