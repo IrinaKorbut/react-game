@@ -30,17 +30,15 @@
     box-sizing: border-box;
 
     @media (max-width: 769px) {
-         width: 350px;
-        height: 350px;
+         width: 320px;
+        height: 320px;
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 550px) {
         width: 250px;
        height: 250px;
    }
 }
-
-
 
 .cell {
     display: flex;

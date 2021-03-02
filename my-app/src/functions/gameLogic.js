@@ -51,7 +51,6 @@ export let setSecondNumber = (state, cell) => {
 };
 
 export let clearNumber = (state) => {
-    // debugger;
     if (state.firstNumber) {
         state.firstNumber.activeClass = !state.firstNumber.activeClass;
         state.firstNumber = null;
@@ -122,9 +121,11 @@ export let cancelMove = (state) => {
 
         state.doneMoves.pop();
     }
-    
 }
 
+export let displayCurrentMove = (state, i, j) => {
+    state.cellsData[i][j].activeClass = !state.cellsData[i][j].activeClass;
+}
 
 export let showMove = (state) => {
     // debugger;
