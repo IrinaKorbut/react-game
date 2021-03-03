@@ -31,6 +31,7 @@ let initialStateDefault = {
     firstNumber: null,
     secondNumber: null,
     doneMoves: [],
+    currentScore: 0
 }
 export let initialState = JSON.parse(localStorage.getItem('initialStateLocalStorage'))
     ? JSON.parse(localStorage.getItem('initialStateLocalStorage'))
@@ -59,6 +60,7 @@ export const gameReducer = (state = initialState, action) => {
                     // debugger;
                     crossNumber(state.numberMatrix, state.firstNumber);
                     crossNumber(state.numberMatrix, state.secondNumber);
+                    state.currentScore = countScore(state);
                     recordMove(state);
                 }
                 clearNumber(state);

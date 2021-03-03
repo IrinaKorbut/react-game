@@ -1,6 +1,7 @@
 import { GameField } from './GameField';
 import { GameButtonGroupFooter } from './buttons/GameButtonGroupFooter';
 import { GameButtonGroupHeader } from './buttons/GameButtonGroupHeader';
+import { GameScore } from './GameScore';
 
 import game from './Game.module.scss';
 
@@ -10,6 +11,7 @@ export const GameContainer = (props) => {
         <div className={game.wrapper}>
             <div className={game.main}>     
                     <GameButtonGroupHeader state={ props.state } dispatch={ props.dispatch }/> 
+                    <GameScore score={props.state.currentScore} />
                     <GameField state={ props.state } dispatch={ props.dispatch } />
                     <GameButtonGroupFooter dispatch={ props.dispatch }/>
             </div>

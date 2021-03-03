@@ -3,7 +3,6 @@ const CLICK_HANDLER_CELL = '123'
 let scoreData = JSON.parse(localStorage.getItem('scoreData')) ? JSON.parse(localStorage.getItem('scoreData')) : [];
 
 export let initialScoreState = {
-    showModal: false,
     scoreData: scoreData
 }
 

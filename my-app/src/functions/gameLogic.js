@@ -1,5 +1,5 @@
 import { initialState } from "../redux/gameReducer";
-import { getAvailableMove } from "./finishGame";
+import { getAvailableMove, countScore } from "./finishGame";
 
 export let setGameSize = (size) => {
     // debugger;
@@ -36,6 +36,7 @@ export let generateCellsData = () => {
     }
     initialState.cellsData = gameMatrix;
     initialState.numberMatrix = gameNumberMatrix;
+    initialState.currentScore = countScore(initialState)
 }
 
 export let isThereIsFirstNumber = (state) => {
