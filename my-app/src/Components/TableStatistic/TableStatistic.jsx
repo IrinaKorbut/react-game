@@ -17,8 +17,9 @@ export const TableStatistic = (props) => {
     
     return (
         <Container className={table.container}>
+            <div className={table.wrapper}>
             <Table striped bordered hover variant="dark" size="sm" className={table.custom}>
-            <thead>
+            <thead >
                 <tr>
                     <th >#</th>
                     <th>Nick Name</th>
@@ -31,6 +32,8 @@ export const TableStatistic = (props) => {
                 { rows } 
             </tbody>
         </Table>
+            </div>
+            
         </Container>
     )
 }

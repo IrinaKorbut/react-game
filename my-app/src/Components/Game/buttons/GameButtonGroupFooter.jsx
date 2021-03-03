@@ -31,7 +31,7 @@ export const GameButtonGroupFooter = (props) => {
                 <Button 
                     variant="secondary"
                     onClick={ clickCancelMove }
-                >Cancel move</Button>
+                >Undo</Button>
             </ButtonGroup>
             <ButtonGroup className="mr-2 ml-2 mb-2" size="sm" aria-label="Second  group">
                 <Button 
@@ -45,12 +45,12 @@ export const GameButtonGroupFooter = (props) => {
                     onClick={ clickNewGame }
                 >New Game</Button>
             </ButtonGroup>
-            <ButtonGroup className="mr-2 ml-2 mb-2" size="sm" aria-label="Third  group">
+            {/* <ButtonGroup className="mr-2 ml-2 mb-2" size="sm" aria-label="Third  group">
                 <Button 
                     variant="secondary" 
                     onClick={ clickAutoPlay }
                 >Autoplay</Button>
-            </ButtonGroup>
+            </ButtonGroup> */}
         </ButtonToolbar>
     )
 }

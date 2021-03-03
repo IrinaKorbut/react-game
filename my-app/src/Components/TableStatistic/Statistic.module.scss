@@ -1,8 +1,12 @@
-.container {
-    height: 77vh;
-    margin: 15px 0 ;     
-    // overflow-y: scroll;
-    padding: 0 !important;
+.container {    
+    height: 100vh;
+    padding-top: 80px; 
+}
+
+.wrapper {
+  overflow-y: scroll;
+    overflow-x: hidden;
+  max-height: 85%;
 }
 
 .custom {

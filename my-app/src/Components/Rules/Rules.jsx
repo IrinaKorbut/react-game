@@ -1,18 +1,23 @@
 import { Container, Jumbotron } from 'react-bootstrap';
+import rules from './Rules.module.scss'
 
 export const Rules = () => {
     return (
-        <div className="wrapper">
+        <div className={rules.wrapper}>
             <Container >
                 <Jumbotron style={{ margin: '0 auto', background: 'rgba(0, 0, 0, 0)' }} className="text-white">
-                    <h1>Play</h1>
-                    <p>The object is to clear the board by selecting numbers that match or that add to ten. Numbers match vertically or horizontally and must be contiguous. For example, a 2 and an 8 add to 10, and so can be eliminated if they are adjacent to each other either horizontally or vertically. Similar for 1 – 9, 3 – 7, etc., as well as 4 – 4, 5 – 5, etc. There can be black space between the numbers; the rule is that there cannot be another number between them.</p>
-                    <h1>Controls</h1>
-                    <p>Select numbers by touching them. The first number you touch will turn grey. When you touch a matching number, assuming they are eliminable, they will be blacked out.</p>
-                    <h1>Undo</h1>
-                    <p>You are allowed to Undo only the previous elimination, so proceed cautiously.You can Undo a Check if your previous move was not to Clear.</p>
-                    <h1>Restart</h1>
-                    <p>If the situation gets too dire, New Game lets you begin again</p>
+                    <h3>Play</h3>
+                    <p>The object is to clear the board by selecting numbers that match or giv after sum needed number. Numbers match vertically or horizontally and must be contiguous. For example, a 2 plus 8 equal 10, and so can be eliminated if they are adjacent to each other either horizontally or vertically. Similar for 1 – 9, 3 – 7, etc., as well as 4 – 4, 5 – 5, etc. There can be black space between the numbers; the rule is that there cannot be another number between them.</p>
+                    <h3>Levels</h3>
+                    <p>You can choose field size and range of numbers and appear of cells in dropdowns. When you choose another numbers range then needed sum also change. For instance, for 1-3 range sum which you will allowed to eliminable become 4; for 1-4 range sum which you will allowed to eliminable become 5 and so on.</p>
+                    <h3>Controls</h3>
+                    <p>Select numbers by touching them. The first number you touch will turn skyblue. When you touch a matching number, assuming they are eliminable, they will be blacked out.</p>
+                    <h3>Undo</h3>
+                    <p>You are allowed to Undo your steps touch "Undo".</p>
+                    <h3>Help</h3>
+                    <p>If you can't find next step you can touch "Show move" and  next numbers allowed to eliminableand will turn green.</p>
+                    <h3>Restart</h3>
+                    <p>To restart you should touch "New Game".</p>
                 </Jumbotron>            
             </Container>
         </div>

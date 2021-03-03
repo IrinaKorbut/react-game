@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import {Navbar, Nav, Container, Button, Modal, Form} from 'react-bootstrap';
+import {Navbar, Nav, Container} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
@@ -14,18 +13,12 @@ const Styles = styled.div `
 `
 
 export const Header = () => {
-
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   return (
     <div>
       <Styles>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
           <Container>
-            <Navbar.Brand href="">Numberama</Navbar.Brand>
+            <Navbar.Brand href="">NumberAma</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
@@ -35,28 +28,10 @@ export const Header = () => {
                 <Nav.Link><Link to='/settings'>Settings</Link></Nav.Link>
                 <Nav.Link><Link to='/statistic'>Statistic</Link></Nav.Link>
               </Nav>
-              <Nav>
-                <Button variant="primary" className='mr-2' onClick={handleShow}>Enter name</Button>
-              </Nav>
             </Navbar.Collapse>
           </Container>
         </Navbar>
       </Styles>
-      <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>Enter your nickname</Modal.Title>                
-            </Modal.Header>
-            <Modal.Body>
-              <Form>
-                <Form.Group>                        
-                  <Form.Control size="lg" type="text" placeholder="Write your nickname to save your record..." />
-                  </Form.Group>
-              </Form>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="primary">Submit</Button>
-            </Modal.Footer>
-        </Modal>
     </div>
   )
 };
