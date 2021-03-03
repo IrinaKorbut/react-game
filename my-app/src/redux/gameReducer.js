@@ -69,7 +69,7 @@ export const gameReducer = (state = initialState, action) => {
                             userName = prompt(`You win! Your score is: ${score}. Enter your name to save your score:`, 'Winner');
                         }
                         putUserScoreToScoreState(state, initialScoreState, userName, score);
-                    })
+                    }, 200)
                 }
             } else {
                 if (!isThereIsFirstNumber(state)) {
