@@ -37,7 +37,7 @@ export const Footer = () => {
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item className={footer.contactItem}>
-                        <Nav.Link className={footer.link} href="https://studio.youtube.com/channel/UCzUy2hCDxaepouPTvKNceug">
+                        <Nav.Link className={footer.link} href="https://youtu.be/f-84lbyvpgE">
                             <Image className={footer.icon} src={YouTubeIcon} fluid />
                         </Nav.Link>
                     </Nav.Item>
