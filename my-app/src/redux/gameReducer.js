@@ -51,7 +51,7 @@ export const gameReducer = (state = initialState, action) => {
             const id = action.event.target.getAttribute('data');
             const i = Number(id[0]);
             const j = Number(id[1]);
-            // check is there first number and  current number shouldn't be firs number
+            // check is there first number and  current number shouldn't be first number
             if (isThereIsFirstNumber(state) && (i !== state.firstNumber.i || j !== state.firstNumber.j)) {
                 setSecondNumber(state, state.cellsData[i][j]);
                 displayCurrentMove(state, i, j)

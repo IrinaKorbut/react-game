@@ -1,7 +1,6 @@
 import { ButtonToolbar, ButtonGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 import { clickHandleFieldSize, clickHandleCellsDesign, clickHandleNumbersRange } from '../../../redux/gameReducer';
 
-
 export const GameButtonGroupHeader = (props) => {
 
     let handleFieldSize = (currentEvent) => {

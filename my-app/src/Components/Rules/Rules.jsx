@@ -18,6 +18,10 @@ export const Rules = () => {
                     <p>If you can't find next step you can touch "Show move" and  next numbers allowed to eliminableand will glow green.</p>
                     <h3>Restart</h3>
                     <p>To restart you should touch "New Game".</p>
+                    <h3>Hot keys</h3>
+                    <p>Enter - start new game.</p>
+                    <p>Space - cancel move.</p>
+                    <p>Q - show next step.</p>
                 </Jumbotron>            
             </Container>
         </div>

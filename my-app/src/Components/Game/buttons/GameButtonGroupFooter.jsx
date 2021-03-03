@@ -1,10 +1,26 @@
+import React, { useEffect, useRef } from 'react'
 import { ButtonToolbar, ButtonGroup, Button } from 'react-bootstrap';
 import { clickCancelMoveActionCreator, clickShowMoveActionCreator, 
     clickNewGameActionCreator, clickAutoPlayActionCreator } from '../../../redux/gameReducer';
 
 import buttonGroupFooter from './ButtonGroupFooter.module.scss';
 
-
+function useKey(key, callBack) {
+    // debugger;
+    const callbackRef = useRef(callBack);
+    useEffect(() => {
+        callbackRef.current = callBack
+    })
+    useEffect(() => {
+        function handle(event) {
+            if (event.code === key) {
+                callbackRef.current(event)
+            }
+        }
+        document.addEventListener('keypress', handle);
+        return () => document.removeEventListener('keypress', handle)
+    }, [key])
+}
 
 export const GameButtonGroupFooter = (props) => {
 
@@ -24,6 +40,9 @@ export const GameButtonGroupFooter = (props) => {
         props.dispatch(clickAutoPlayActionCreator())
     }
 
+    useKey("Enter", clickNewGame)
+    useKey("Space", clickCancelMove)
+    useKey("KeyQ", clickShowMove)
 
     return (
         <ButtonToolbar className={ buttonGroupFooter.customToolBar } aria-label="Toolbar with button groups">
