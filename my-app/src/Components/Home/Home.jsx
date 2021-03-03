@@ -13,7 +13,7 @@ export const Home = () => {
                         The aim of this game get as less score as you can.
                         All rules of this game you can find on "How to play" page.
                         Also there are page of records in which you can see score all your games. But to save your score you should write your nickName after finish game in prompt window. (Sure, I know that this window is not good, but I had not enough free time to implement all features).
-                        Also you can open game fullscreen.
+                        Also you can open game field fullscreen by button in right top corner or by Z hot-key.
                     </p>
                     <p className={home.paragraph}>I hope you will enjoy it.</p>
                     <p className={home.paragraph}>Have a good day :)</p>

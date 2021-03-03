@@ -1,5 +1,6 @@
 import { ButtonToolbar, ButtonGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 import { clickHandleFieldSize, clickHandleCellsDesign, clickHandleNumbersRange } from '../../../redux/gameReducer';
+import buttonGroupHeader from './ButtonGroupHeader.module.scss';
 
 export const GameButtonGroupHeader = (props) => {
 
@@ -18,7 +19,7 @@ export const GameButtonGroupHeader = (props) => {
     return (
         <ButtonToolbar aria-label="Toolbar with button groups">
             <ButtonGroup className="mr-2" size="sm" aria-label="First group">
-                <DropdownButton variant="secondary" className="mr-2" 
+                <DropdownButton variant="secondary" className={`mr-2 ${buttonGroupHeader.width97}`}  
                     size="sm" as={ButtonGroup} title={props.state.sizeTitle} id="bg-nested-dropdown">
                     <Dropdown.Item eventKey="1" onClick={ handleFieldSize } >6x6</Dropdown.Item>
                     <Dropdown.Item eventKey="2" onClick={ handleFieldSize } >8x8</Dropdown.Item>
@@ -26,7 +27,7 @@ export const GameButtonGroupHeader = (props) => {
                 </DropdownButton>
             </ButtonGroup>
             <ButtonGroup className="mr-2" size="sm" aria-label="First group">
-                <DropdownButton variant="secondary" className="mr-2" size="sm" 
+                <DropdownButton variant="secondary" className={`mr-2 ${buttonGroupHeader.width97}`} size="sm" 
                     as={ButtonGroup} title={props.state.numbersRangeTitle} id="bg-nested-dropdown">
                     <Dropdown.Item eventKey="4" onClick={ handleNumbersRange } >1-3</Dropdown.Item>
                     <Dropdown.Item eventKey="5" onClick={ handleNumbersRange } >1-4</Dropdown.Item>
@@ -38,7 +39,7 @@ export const GameButtonGroupHeader = (props) => {
                 </DropdownButton>
             </ButtonGroup>
             <ButtonGroup className="mr-2" size="sm" aria-label="First group">
-                <DropdownButton variant="secondary" className="mr-2" 
+                <DropdownButton variant="secondary" className={`mr-2 ${buttonGroupHeader.width105}`} 
                     size="sm" as={ButtonGroup} title={props.state.cellsDesign} id="bg-nested-dropdown">
                     <Dropdown.Item eventKey="11" onClick={ handleCellsDesign }>Circle</Dropdown.Item>
                     <Dropdown.Item eventKey="12" onClick={ handleCellsDesign }>Square</Dropdown.Item>

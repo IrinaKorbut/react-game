@@ -6,8 +6,7 @@ import {
     showMove, clearAllCellFromHelpClass, displayCurrentMove
 } from "../functions/gameLogic";
 import { getAvailableMove, countScore } from "../functions/finishGame";
-import { changeCellsDesign, putUserScoreToScoreState, deleteVariableFromLocalStorage,
-    autoPlayGame } from "../functions/helpFunctions";
+import { changeCellsDesign, putUserScoreToScoreState, deleteVariableFromLocalStorage } from "../functions/helpFunctions";
 
 const CLICK_HANDLER_CELL = 'CLICK_HANDLER_CELL';
 const CLICK_CANCEL_MOVE = 'CLICK_CANCEL_MOVE';
@@ -18,10 +17,8 @@ const CLICK_HANDLE_NUMBERS_RANGE = 'CLICK_HANDLE_NUMBERS_RANGE';
 const CLICK_NEW_GAME = 'CLICK_NEW_GAME';
 const CLICK_AUTOPLAY = 'CLICK_AUTOPLAY';
 
-
-
 let initialStateDefault = {
-    size: 6, // по  дефолту
+    size: 6,
     sizeTitle: 'Field size',
     cellsDesign: 'Cells design',
     numbersRange: 9,
@@ -55,18 +52,14 @@ export const gameReducer = (state = initialState, action) => {
             if (isThereIsFirstNumber(state) && (i !== state.firstNumber.i || j !== state.firstNumber.j)) {
                 setSecondNumber(state, state.cellsData[i][j]);
                 displayCurrentMove(state, i, j)
-                // debugger;
                 if (isAbleCrossNumbers(state) && isElementLocatedCloseEachOther(state)) {
-                    // debugger;
                     crossNumber(state.numberMatrix, state.firstNumber);
                     crossNumber(state.numberMatrix, state.secondNumber);
                     state.currentScore = countScore(state);
                     recordMove(state);
                 }
                 clearNumber(state);
-                // debugger;
                 if (!getAvailableMove(state)) {
-                    // debugger;
                     let score = countScore(state)
                     setTimeout(() => {
                         let userName;
@@ -77,13 +70,9 @@ export const gameReducer = (state = initialState, action) => {
                         }
                         putUserScoreToScoreState(state, initialScoreState, userName, score);
                     })
-                    // debugger;
-                    //show modal window  
                 }
-                //check is finish game
             } else {
                 if (!isThereIsFirstNumber(state)) {
-                    // debugger
                     setFirstNumber(state, state.cellsData[i][j]);
                     displayCurrentMove(state, i, j)
                 } else {
@@ -127,7 +116,6 @@ export const gameReducer = (state = initialState, action) => {
             return state;
         case CLICK_AUTOPLAY:
             // autoPlayGame(state)
-            // console.log('start auto play')
             return state;
         default:
             localStorage.setItem('initialStateLocalStorage', JSON.stringify(state))
@@ -186,6 +174,3 @@ export const clickAutoPlayActionCreator = () => {
         type: CLICK_AUTOPLAY,
     }
 }
-
-
-

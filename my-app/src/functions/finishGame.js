@@ -1,6 +1,5 @@
 import { initialState } from "../redux/gameReducer";
 
-
 let duplicatedMatrix = (baseMatrix) => {
   const duplicatedMatrix = []
   for (let i = 0; i < baseMatrix.length; i++) {
@@ -45,7 +44,6 @@ const getCoordinatesAvailableMove = (matrix) => {
 }
 
 export let getAvailableMove = (state) => {
-  // debugger;
   const baseMatrix = duplicatedMatrix(state.numberMatrix);
   const transposedMatrix = transposeMatrix(baseMatrix);
   let coordinatesAvailableMove = null;
@@ -64,7 +62,6 @@ export let getAvailableMove = (state) => {
 
 export let countScore = (state) => {
   const finishedMatrix = duplicatedMatrix(state.numberMatrix);
-  // debugger;
   let matrixArrSum = finishedMatrix.map((array) => {
     return array.reduce((accum, current) => accum + current, 0)
   })

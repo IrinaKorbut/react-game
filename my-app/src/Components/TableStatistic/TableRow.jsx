@@ -1,5 +1,4 @@
 export const TableRow = (props) => {
-    // debugger;
     return (
         <tr >
             <td>{props.number}</td>

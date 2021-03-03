@@ -6,40 +6,11 @@ import { Game } from './Components/Game/Game';
 import { Rules } from './Components/Rules/Rules';
 import { Settings } from './Components/Settings/Settings';
 import { Statistic } from './Components/TableStatistic/Statistic';
-import React, {useEffect, useRef} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-// function useKey(key, callBack) {
-//   // debugger;
-//   const callbackRef = useRef(callBack);
-//   useEffect(() => {
-//     callbackRef.current = callBack
-//   })
-//   useEffect(() => {
-//     function handle (event) {
-//       if (event.code === key) {
-//         callbackRef.current(event)
-//       }
-//     }
-//     document.addEventListener('keypress', handle);
-//     return () => document.removeEventListener('keypress', handle)
-//   }, [key])
-// }
-
 function App(props) {
-  // function handleArrowLeft() {
-  //   console.log('ArrowLeft')
-  // }
-  // function ArrowRight() {
-  //   console.log('Space')
-  // }
-  // function KeyQ() {
-  //   console.log('KeyQ')
-  // }
-  // useKey("Enter", handleArrowLeft)
-  // useKey("Space", ArrowRight)
-  // useKey("KeyQ", KeyQ)
+  
   return (
     <div className="App bg-secondary">
       <BrowserRouter>

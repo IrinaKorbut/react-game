@@ -4,7 +4,7 @@ export let store = {
 
     _state: {
         game: {
-            size: 10, // по  дефолту
+            size: 10, 
             cellsData: [],
             firstNumber: null,
             secondNumber: null,

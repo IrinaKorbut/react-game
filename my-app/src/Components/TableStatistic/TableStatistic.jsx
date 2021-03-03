@@ -5,8 +5,7 @@ import { compareUsersScore } from '../../functions/helpFunctions'
 import table from'./Statistic.module.scss'
 
 export const TableStatistic = (props) => {
-    // debugger;
-
+    
     props.scoreData.sort( compareUsersScore );
     const rows = props.scoreData.map( (player, index) => <TableRow 
             number={ index + 1 }
@@ -32,8 +31,7 @@ export const TableStatistic = (props) => {
                 { rows } 
             </tbody>
         </Table>
-            </div>
-            
+            </div>            
         </Container>
     )
 }

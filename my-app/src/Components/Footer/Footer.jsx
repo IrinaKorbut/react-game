@@ -47,14 +47,11 @@ export const Footer = () => {
                     onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
                 > 
                     <Nav.Item className={footer.logo}>
-                        <Nav.Link className={footer.link} href="https://studio.youtube.com/channel/UCzUy2hCDxaepouPTvKNceug">
+                        <Nav.Link className={footer.link} href="https://rs.school/">
                             <Image className={footer.logo} src={logo_rsSchool} fluid />
                         </Nav.Link>
                     </Nav.Item>
                 </Nav>
-                {/* <div className={footer.logo}>
-                    <Image src={logo_rsSchool} fluid />
-                </div> */}
                 <div className='year'>2021</div>
             </Container>
         </Container>

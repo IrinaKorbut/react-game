@@ -2,6 +2,7 @@ import {Navbar, Nav, Container} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
+
 const Styles = styled.div `
   a, .navbar-nav, .nav-link {
     color: #adb1b8;

@@ -4,7 +4,6 @@ import { FormSwitchSound } from './FormSwitchSound';
 import settings from './SoundSettings.module.scss'
 
 export const SettingsWindow = () => {
-    // debugger
     return (
         <div className={settings.wrapper}>
             <div className={settings.main}>        

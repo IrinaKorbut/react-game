@@ -2,12 +2,10 @@ import { initialState } from "../redux/gameReducer";
 import { getAvailableMove, countScore } from "./finishGame";
 
 export let setGameSize = (size) => {
-    // debugger;
     initialState.size = size;
 }
 
 export let generateCellsData = () => {
-    // debugger;
     const numbersRange = initialState.numbersRange;
     const cellDesign = (initialState.cellsDesign === 'Circle');
     const size = initialState.size;
@@ -70,7 +68,6 @@ export let isAbleCrossNumbers = (state) => {
 }
 
 export let crossNumber = (numberMatrix, cell) => {
-    // debugger;
         cell.disableClass = true;
         numberMatrix[cell.i][cell.j] = 0;
 }
@@ -82,7 +79,6 @@ export let isElementLocatedCloseEachOther = (state) => {
         let i = firstNumber.i;
         let firstIndex = Math.min(firstNumber.j, secondNumber.j) + 1;
         let lastIndex = Math.max(firstNumber.j, secondNumber.j);
-        // debugger;
         for (; firstIndex < lastIndex; firstIndex += 1) {
             if (state.numberMatrix[i][firstIndex] !== 0) {
                 return false;
@@ -94,7 +90,6 @@ export let isElementLocatedCloseEachOther = (state) => {
         let j = firstNumber.j;
         let firstIndex = Math.min(firstNumber.i, secondNumber.i) + 1;
         let lastIndex = Math.max(firstNumber.i, secondNumber.i);
-        // debugger;
         for (; firstIndex < lastIndex; firstIndex += 1) {
             if (state.numberMatrix[firstIndex][j] !== 0) {
                 return false;
@@ -109,7 +104,6 @@ export let recordMove = (state) => {
 }
 
 export let cancelMove = (state) => {
-    // debugger;
     if (state.doneMoves.length) {
         let lastMoveFirstNumber = state.doneMoves[state.doneMoves.length - 1][0]
         let lastMoveSecondNumber = state.doneMoves[state.doneMoves.length - 1][1]
@@ -128,8 +122,7 @@ export let displayCurrentMove = (state, i, j) => {
     state.cellsData[i][j].activeClass = !state.cellsData[i][j].activeClass;
 }
 
-export let showMove = (state) => {
-    // debugger;
+export let showMove = (state) => {    
     let coordinatesAvailableMove = getAvailableMove(state); 
     if (coordinatesAvailableMove) {
         state.cellsData[coordinatesAvailableMove[0]][coordinatesAvailableMove[1]].helpClass = true;
@@ -137,8 +130,7 @@ export let showMove = (state) => {
     }     
 }
 
-export let clearAllCellFromHelpClass = (state) => {
-    // debugger;
+export let clearAllCellFromHelpClass = (state) => {    
     for (let i = 0; i < state.cellsData.length; i++) {
         state.cellsData[i].forEach((cellData) => {
             cellData.helpClass = false;
