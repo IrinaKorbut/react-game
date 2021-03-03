@@ -24,12 +24,16 @@ export const GameCell = (props) => {
     let isCircleClass = props.circleClass ? game.cellCircle : '';
 
     return (
-        <div             
-            className={`${game.cell} ${isActiveClass} ${isDisableClass} ${isHelpClass} ${isCircleClass}`} 
+        <div className={game.cellContainer}
             style={ cellStyle }
+        >
+            <div             
+            className={`${game.cell} ${isActiveClass} ${isDisableClass} ${isHelpClass} ${isCircleClass}`} 
+            
             onClick={ clickHandlerCell } 
             data={ props.data }>
                 { props.value }
-        </div>
+            </div>
+        </div>        
     )
 }

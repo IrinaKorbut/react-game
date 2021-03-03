@@ -11,11 +11,11 @@ export const Rules = () => {
                     <h3>Levels</h3>
                     <p>You can choose field size and range of numbers and appear of cells in dropdowns. When you choose another numbers range then needed sum also change. For instance, for 1-3 range sum which you will allowed to eliminable become 4; for 1-4 range sum which you will allowed to eliminable become 5 and so on.</p>
                     <h3>Controls</h3>
-                    <p>Select numbers by touching them. The first number you touch will turn skyblue. When you touch a matching number, assuming they are eliminable, they will be blacked out.</p>
+                    <p>Select numbers by touching them. The first number you touch will turn purple. When you touch a matching number, assuming they are eliminable, they will be blacked out.</p>
                     <h3>Undo</h3>
                     <p>You are allowed to Undo your steps touch "Undo".</p>
                     <h3>Help</h3>
-                    <p>If you can't find next step you can touch "Show move" and  next numbers allowed to eliminableand will turn green.</p>
+                    <p>If you can't find next step you can touch "Show move" and  next numbers allowed to eliminableand will glow green.</p>
                     <h3>Restart</h3>
                     <p>To restart you should touch "New Game".</p>
                 </Jumbotron>            
