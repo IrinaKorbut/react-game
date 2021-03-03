@@ -1,6 +1,6 @@
 import { Form } from 'react-bootstrap';
 
-export const FormSwitch = (props) => {
+export const FormSwitchMusic = (props) => {
     const id = `${props.label}-switch`
     return (
         <Form className="mb-3">
