@@ -7,32 +7,31 @@ import { Rules } from './Components/Rules/Rules';
 import { Settings } from './Components/Settings/Settings';
 import { Statistic } from './Components/TableStatistic/Statistic';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 
 function App(props) {
-  
+
   return (
     <div className="App bg-secondary">
       <HashRouter>
-        <Header/>
+        <Header />
         <Switch >
-          <Route exact path='/home' render={() => <Home />} />
-          <Route path='/game' render={() => <Game 
-            game={ props.state.game } 
-            score={ props.state.score } 
-            dispatch={ props.dispatch }/>} 
+          <Route exact path='/' render={() => <Home />} />
+          <Route path='/game' render={() => <Game
+            game={props.state.game}
+            score={props.state.score}
+            dispatch={props.dispatch} />}
           />
           <Route path='/rules' render={() => <Rules />} />
           <Route path='/settings' render={() => <Settings />} />
-          <Route path='/statistic' render={() => <Statistic 
-            score={ props.state.score }
-            game={ props.state.game } 
-            />} 
+          <Route path='/statistic' render={() => <Statistic
+            score={props.state.score}
+            game={props.state.game}
+          />}
           />
-          <Redirect exact from='/' to='/home' />
         </Switch>
-        <Footer/>
-      </HashRouter>        
+        <Footer />
+      </HashRouter>
     </div>
   );
 }
