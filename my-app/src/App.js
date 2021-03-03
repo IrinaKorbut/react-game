@@ -7,16 +7,16 @@ import { Rules } from './Components/Rules/Rules';
 import { Settings } from './Components/Settings/Settings';
 import { Statistic } from './Components/TableStatistic/Statistic';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
 
 function App(props) {
   
   return (
     <div className="App bg-secondary">
-      <BrowserRouter>
+      <HashRouter>
         <Header/>
         <Switch >
-          <Route exact path='/' render={() => <Home />} />
+          <Route exact path='/home' render={() => <Home />} />
           <Route path='/game' render={() => <Game 
             game={ props.state.game } 
             score={ props.state.score } 
@@ -29,9 +29,10 @@ function App(props) {
             game={ props.state.game } 
             />} 
           />
+          <Redirect exact from='/' to='/home' />
         </Switch>
         <Footer/>
-      </BrowserRouter>        
+      </HashRouter>        
     </div>
   );
 }
