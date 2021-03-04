@@ -1,0 +1,151 @@
+.wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.fullScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(209, 136, 136);
+    background: -moz-linear-gradient(45deg, rgb(209, 136, 136) 0%, rgb(156, 1, 1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgb(209, 136, 136)), color-stop(100%, rgb(156, 1, 1)));
+    background: -webkit-linear-gradient(45deg, rgb(209, 136, 136) 0%, rgb(156, 1, 1) 100%);
+    background: -o-linear-gradient(45deg, rgb(209, 136, 136) 0%, rgb(156, 1, 1) 100%);
+    background: -ms-linear-gradient(45deg, rgb(209, 136, 136) 0%, rgb(156, 1, 1) 100%);
+    background: linear-gradient(45deg, rgb(209, 136, 136) 0%, rgb(156, 1, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgb(209, 136, 136)', endColorstr='rgb(156, 1, 1)', GradientType=1 );
+  
+    width: 50%;
+    @media (max-width: 769px) {
+        width: 80%;
+   }
+}
+
+.main {
+    height: 70vh;
+    background: rgb(156, 1, 1);
+    box-shadow: 0px 2px 80px -20px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+}
+
+.fullScreenButton {
+    width: 18px;
+    height: 18px;
+    top: 0;
+    left: calc(100% - 18px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background-color: rgba(255, 255, 255, 0.315) !important;
+    border: none !important;
+    transition: 0.5s;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    i{
+        color: #212529;
+        font-size: 1rem;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.score {
+    color: white;
+}
+
+.field {
+    width: 270px;
+    height: 270px;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+
+    @media (max-width: 770px) {
+         width: 350px;
+        height: 350px;
+    }
+
+    @media (max-width: 550px) {
+        width: 280px;
+       height: 280px;
+   }
+}
+
+.cellContainer {
+    background: rgb(156, 1, 1);
+}
+
+.cell {
+    width: 95%;
+    height: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.753);   
+    transition: 0.5s;
+
+    &:hover {
+        background-color: rgb(177, 181, 241);
+        cursor: pointer;
+    }
+}
+
+.cellCircle {
+    border-radius: 50%;
+}
+
+.active{
+    background-color: rgb(91, 95, 163);
+    &:hover {
+        background-color: rgb(91, 95, 163);
+        cursor: pointer;
+    }
+}
+
+.disable {
+    background-color: rgb(58, 57, 57);
+    color:transparent;
+    &:hover {
+        background-color: rgb(58, 57, 57);
+        cursor: default;
+    }
+}
+
+.help {
+    transition: 1.5s;
+    background: repeating-linear-gradient(
+        75grad,
+        rgba(0, 0, 0, 0) 25%,
+        rgba(255, 255, 255, 0.6) 26%,
+        rgba(0, 0, 0, 0) 50%,
+        rgba(0, 0, 0, 0) 100%
+    ),rgb(127, 241, 112);
+    animation: helpLight 16s infinite linear;
+}
+
+
+@keyframes helpLight {
+    0% {
+        background-position: 0px 0px;
+    }
+    100% {
+        background-position: 400px 0px;
+    }
+}

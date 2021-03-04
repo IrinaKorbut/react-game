@@ -1,0 +1,31 @@
+.container {    
+    height: 100vh;
+    padding-top: 80px; 
+}
+
+.wrapper {
+  overflow-y: scroll;
+    overflow-x: hidden;
+  max-height: 82%;
+}
+
+.custom {
+    margin-bottom: 0 !important;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #5a5a5aea; 
+  }
+   
+  ::-webkit-scrollbar-thumb {
+    background: #222222;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #000000; 
+    cursor: pointer;
+  }
